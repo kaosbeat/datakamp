@@ -12,6 +12,13 @@ init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint 
 from pyfiglet import figlet_format
 
+lastID = "0"
+ID1 = '048B50B2FD3480'
+score1 = 0
+ID2 = '1AF97D05'
+score2 = 0
+
+
 # Card reader Functions
 def open_reader():
 	""" Attempts to open the card reader """
@@ -54,8 +61,14 @@ def get_time():
 
 
 
-###LEDpin functions
-def enable_LED(pin,flash,duration):
+###GPIO functions
+def enable_LED(pin):
+	GPIO.output(pin,GPIO.HIGH)
+
+def disable_LED(pin):
+	GPIO.output(pin,GPIO.LOW)
+
+def flash_LED(pin,flash,duration):
 	if flash:
 		for x in xrange(1,duration):
 			GPIO.output(pin,GPIO.HIGH)
@@ -68,17 +81,49 @@ def enable_LED(pin,flash,duration):
 		GPIO.output(pin,GPIO.LOW)
 
 
-
+def got_input(channel):
+	global lastID
+	global score1, score2
+	print("gotinput from " + channel)
+	if (channel == "GPIO3"):
+		print("channel was really GPIO3")
+		print lastID
+		print ID1
+		if (lastID == ID1):
+			score1 = score1 + 1
+			cprint(figlet_format(str(score1), font='banner'),'green', 'on_red', attrs=['bold'])
+		if (lastID == ID2):
+			score2 = score2 + 1
+			cprint(figlet_format(str(score2), font='banner'),'green', 'on_red', attrs=['bold'])	
+		disable_LED("GPIO1")		
+	if(channel == "GPIO4"):
+		if (lastID == ID1):
+			score1 = score1 - 1
+			cprint(figlet_format(str(score1), font='banner'),'green', 'on_red', attrs=['bold'])
+		if (lastID == ID2):
+			score2 = score2 - 1
+			cprint(figlet_format(str(score2), font='banner'),'green', 'on_red', attrs=['bold'])
+		disable_LED("GPIO2")
 
 
 ### REMOTE_FUNCTIONS
 def checkID(ID):
-	if (ID == '048B50B2FD3480'):
+	global lastID
+	if (ID == ID1):
 		cprint(figlet_format('datakamp', font='banner'),'yellow', 'on_red', attrs=['bold'])
-		enable_LED("GPIO1",True,5)
-	if (ID == '1AF97D05'):
-		cprint(figlet_format('cirq!', font='banner3'),'red', 'on_white', attrs=['bold'])
-		enable_LED("GPIO2",True,5)
+		lastID = ID1
+		enable_LED("GPIO1")
+
+
+
+
+	if (ID == ID2):
+		cprint(figlet_format('cirq!', font='banner3'),'red', 'on_yellow', attrs=['bold'])
+		lastID = ID2
+		enable_LED("GPIO2")
+
+	print(lastID)
+
 
 
 
@@ -88,10 +133,17 @@ def checkID(ID):
 card = open_reader()
 card_info = card.info('cardselect v0.1m')
 #setup GPIOs
+###clean
 GPIO.cleanup()
+GPIO.remove_event_detect("GPIO3")
+###setup
 GPIO.setup("GPIO1",GPIO.OUT)
 GPIO.setup("GPIO2",GPIO.OUT)
-GPIO.setup("GPIO3",GPIO.OUT)
+GPIO.setup("GPIO4",GPIO.IN)
+GPIO.setup("GPIO3",GPIO.IN)
+#add callback for GPIO3
+GPIO.add_event_detect("GPIO3", GPIO.FALLING, got_input)
+GPIO.add_event_detect("GPIO4", GPIO.FALLING, got_input)
 
 
 # Main loop
