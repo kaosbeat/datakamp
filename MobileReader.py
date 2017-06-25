@@ -45,7 +45,12 @@ def listen(card, interval):
 			#	[{"card_id": card.uid}, {"timedate": get_time()}, {"action": "Placed"}]})
 			# print(data)
 			# checkID(card.uid)
-			logAction(readerid, card.uid, "mobilescan")
+			data = logAction(readerid, card.uid, "mobilescan")
+			if data:
+				print ("aantal keren gescanned: " + str(data['totalscans']))
+				print ("huidige status: ")
+				cprint(figlet_format(data['currentplan'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+				print ("naam: " + str(data['name']) )
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)

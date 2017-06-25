@@ -1,8 +1,14 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
+
+
 #
 # RFID Read
 #
 
-import sys
+
+
+import os,sys
 import time
 import json
 import rfidiot
@@ -11,6 +17,14 @@ from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint 
 from pyfiglet import figlet_format
+from RFIDapi import *
+readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
+state = 0 #program state to define the functions of buttons
+#actions = [{'ID':1,'score': -3 , 'text': "We all make choices in life, but in the end our choices make us. 'Andrew Ryan, Bioshock' " },
+#{'ID':2,'score': -5 , 'text': "What is better? To be born good or to overcome your evil nature through great effort? 'Paarthurnax, Elder Scrolls V: Skyrim'"},
+#{'ID':3,'score': 5 , 'text': "The right man in the wrong place can make all the difference in the world. 'G-Man, Half-Life 2'"}, 
+#{'ID':4,'score': 1 , 'text': "Wanting something does not give you the right to have it. 'Ezio Auditore, Assassin’s Creed 2'"}]
+
 
 lastID = "0"
 ID1 = '048B50B2FD3480'
@@ -32,13 +46,15 @@ def open_reader():
 
 def listen(card, interval):
 	""" Listens for a card to be placed on the reader """
-	
+	global state
 	while 1:	
 		if card.select():
+			state = 1
 			data = json.dumps({"card_info":
 				[{"card_id": card.uid}, {"timedate": get_time()}, {"action": "Placed"}]})
 			print(data)
 			checkID(card.uid)
+			logAction("kaspersmac", card.uid, 42 )
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
@@ -85,25 +101,27 @@ def got_input(channel):
 	global lastID
 	global score1, score2
 	print("gotinput from " + channel)
-	if (channel == "GPIO3"):
-		print("channel was really GPIO3")
-		print lastID
-		print ID1
-		if (lastID == ID1):
-			score1 = score1 + 1
-			cprint(figlet_format(str(score1), font='banner'),'green', 'on_red', attrs=['bold'])
-		if (lastID == ID2):
-			score2 = score2 + 1
-			cprint(figlet_format(str(score2), font='banner'),'green', 'on_red', attrs=['bold'])	
-		disable_LED("GPIO1")		
-	if(channel == "GPIO4"):
-		if (lastID == ID1):
-			score1 = score1 - 1
-			cprint(figlet_format(str(score1), font='banner'),'green', 'on_red', attrs=['bold'])
-		if (lastID == ID2):
-			score2 = score2 - 1
-			cprint(figlet_format(str(score2), font='banner'),'green', 'on_red', attrs=['bold'])
-		disable_LED("GPIO2")
+	actionindex = 0
+
+	# if (channel == "GPIO3"):
+	# 	print("channel was really GPIO3")
+	# 	print lastID
+	# 	print ID1
+	# 	if (lastID == ID1):
+	# 		score1 = score1 + 1
+	# 		cprint(figlet_format(str(score1), font='banner'),'green', 'on_red', attrs=['bold'])
+	# 	if (lastID == ID2):
+	# 		score2 = score2 + 1
+	# 		cprint(figlet_format(str(score2), font='banner'),'green', 'on_red', attrs=['bold'])	
+	# 	disable_LED("GPIO1")		
+	# if(channel == "GPIO4"):
+	# 	if (lastID == ID1):
+	# 		score1 = score1 - 1
+	# 		cprint(figlet_format(str(score1), font='banner'),'green', 'on_red', attrs=['bold'])
+	# 	if (lastID == ID2):
+	# 		score2 = score2 - 1
+	# 		cprint(figlet_format(str(score2), font='banner'),'green', 'on_red', attrs=['bold'])
+	# 	disable_LED("GPIO2")
 
 
 ### REMOTE_FUNCTIONS
@@ -126,7 +144,8 @@ def checkID(ID):
 
 
 
-
+def updateUI():
+	print ("updating ui")
 
 ##setup stuff
 # Open the card reader
@@ -150,4 +169,5 @@ GPIO.add_event_detect("GPIO4", GPIO.FALLING, got_input)
 while 1:
 	card_id = listen(card, 0.1)
 	listen_remove(card, 0.1, card_id)
+	updateUI()
 
