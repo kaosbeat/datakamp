@@ -18,8 +18,10 @@ init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint 
 from pyfiglet import figlet_format
 from RFIDapi import *
+from screensavers import *
 readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
 state = 0 
+screensaverstate = 0
 
 readerid = "00:11:22:33:44:55"
 
@@ -38,13 +40,11 @@ def open_reader():
 def listen(card, interval):
 	""" Listens for a card to be placed on the reader """
 	global state
-	while 1:	
+	while 1:
+		Screen.wrapper(datascreen)
+		print("now is the time to exit the program by CTRL-C")
+		time.sleep(2)
 		if card.select():
-			# state = 1
-			# data = json.dumps({"card_info":
-			#	[{"card_id": card.uid}, {"timedate": get_time()}, {"action": "Placed"}]})
-			# print(data)
-			# checkID(card.uid)
 			data = logAction(readerid, card.uid, "mobilescan")
 			if data:
 				print ("aantal keren gescanned: " + str(data['totalscans']))
@@ -54,6 +54,7 @@ def listen(card, interval):
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
+
 	return card.uid
 
 def listen_remove(card, interval, card_id):
@@ -71,7 +72,6 @@ def listen_remove(card, interval, card_id):
 # Open the card reader
 card = open_reader()
 card_info = card.info('cardselect v0.1m')
-
 
 # Main loop
 while 1:
