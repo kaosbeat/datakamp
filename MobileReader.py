@@ -19,12 +19,14 @@ from termcolor import cprint
 from pyfiglet import figlet_format
 from RFIDapi import *
 from screensavers import *
+
+import config
+
 readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
 state = 0 
 screensaverstate = 0
 
-readerid = "00:11:22:33:44:55"
-
+readerid = config.settings['readerID']
 
 # Card reader Functions
 def open_reader():
