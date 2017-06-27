@@ -17,7 +17,7 @@ from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint 
 from pyfiglet import figlet_format
-from RFIDapi import *
+from RFIDapi import logAction,getVistorActions
 from screensavers import *
 
 import config
@@ -51,6 +51,7 @@ def listen(card, interval):
 			screensaverstate = 0
 			if post:
 				data = getVistorActions(card.uid)
+				print data
 				print ("aantal punten: " + str(data['credits']))
 				print ("huidige status: ")
 				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
