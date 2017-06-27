@@ -41,18 +41,20 @@ def open_reader():
 
 def listen(card, interval):
 	""" Listens for a card to be placed on the reader """
-	global state
+	global screensaverstate
 	while 1:
-		Screen.wrapper(datascreen)
-		print("now is the time to exit the program by CTRL-C")
-		time.sleep(2)
+		# Screen.wrapper(datascreen)
+		# print("now is the time to exit the program by CTRL-C")
+		# time.sleep(2)
 		if card.select():
-			data = logAction(readerid, card.uid, "mobilescan")
-			if data:
-				print ("aantal keren gescanned: " + str(data['totalscans']))
+			post = logAction(readerid, card.uid, "mobilescan")
+			screensaverstate = 0
+			if post:
+				data = getVistorActions(card.uid)
+				print ("aantal punten: " + str(data['credits']))
 				print ("huidige status: ")
-				cprint(figlet_format(data['currentplan'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-				print ("naam: " + str(data['name']) )
+				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+				# print ("naam: " + str(data['name']) )
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
@@ -61,7 +63,9 @@ def listen(card, interval):
 
 def listen_remove(card, interval, card_id):
 	""" Listens for a card to be placed on the reader """
+	# Screen.wrapper(datascreen)
 	while 1:
+		screensaverstate = 1
 		if not card.select():
 			# data = json.dumps({"card_info":
 			# 	[{"card_id": card_id}, {"timedate": get_time()}, {"action": "Removed"}]})
@@ -75,10 +79,14 @@ def listen_remove(card, interval, card_id):
 card = open_reader()
 card_info = card.info('cardselect v0.1m')
 
+
+
+
 # Main loop
 while 1:
 	card_id = listen(card, 0.1)
 	listen_remove(card, 0.1, card_id)
+
 
 #Read RFID
 
