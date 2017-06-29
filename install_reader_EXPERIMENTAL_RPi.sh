@@ -18,6 +18,7 @@ apt-get install swig -y
 apt-get install libpcsclite-dev -y
 apt-get install libusb-dev -y
 apt-get install pcscd -y
+apt-get install python-dev -y
 pip install pyscard
 
 
