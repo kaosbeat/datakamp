@@ -60,8 +60,8 @@ def listen(card, interval):
 				print ("huidige status: ")
 				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 				# print ("naam: " + str(data['name']) )
-            else:
-                print "no post"
+            		else:
+                		print "no post"
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
