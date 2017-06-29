@@ -19,17 +19,17 @@ apt-get install libpcsclite-dev -y
 apt-get install libusb-dev -y
 apt-get install pcscd -y
 apt-get install python-dev -y
-pip install pyscard
+
 
 
 # Install libNFC? CHECK!!
-#cd ~
-#wget http://dl.bintray.com/nfc-tools/sources/libnfc-1.7.1.tar.bz2
-#tar -xf libnfc-1.7.1.tar.bz2  
-#cd libnfc-1.7.1
-#./configure --prefix=/usr --sysconfdir=/etc
-#make
-#sudo make install 
+cd ~
+wget http://dl.bintray.com/nfc-tools/sources/libnfc-1.7.1.tar.bz2
+tar -xf libnfc-1.7.1.tar.bz2  
+cd libnfc-1.7.1
+./configure --prefix=/usr --sysconfdir=/etc
+make
+sudo make install 
 #
 apt-get install libjpeg-dev 
 #more dependencies necessary? CHECK!!
@@ -49,6 +49,7 @@ pip install colorama
 pip install termcolor
 pip install pyfiglet
 pip install pycrypto
+pip install pyscard
 
 #automated start of script TEST!!
 echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart
