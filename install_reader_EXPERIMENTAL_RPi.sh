@@ -14,10 +14,10 @@ echo 'nfc' > /etc/modprobe.d/rfid-blacklist.conf
 modprobe -r pn533 nfc
 # 
 
-apt-get install swig
-apt-get install libpcsclite-dev
-apt-get install libusb-dev
-apt-get install pcscd
+apt-get install swig -y
+apt-get install libpcsclite-dev -y
+apt-get install libusb-dev -y
+apt-get install pcscd -y
 pip install pyscard
 
 
@@ -30,9 +30,11 @@ pip install pyscard
 #make
 #sudo make install 
 #
+apt-get install libjpeg-dev 
+#more dependencies necessary? CHECK!!
+#apt-get install libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 
 echo "installing RFIDIOT"
-
 wget https://github.com/AdamLaurie/RFIDIOt/archive/master.zip
 unzip master.zip
 cd RFIDIOt-master
@@ -40,11 +42,6 @@ python ./setup.py install
 cd ..
 
 echo "installing some more dependencies"
-
-apt-get install libjpeg-dev 
-#more dependencies necessary? CHECK!!
-#apt-get install libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
-
 pip install asciimatics
 pip install requests
 pip install colorama
