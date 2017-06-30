@@ -31,9 +31,9 @@ apt-get install python-dev -y
 #make
 #sudo make install 
 #
-apt-get install libjpeg-dev 
+#apt-get install libjpeg-dev 
 #more dependencies necessary? CHECK!!
-#apt-get install libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+apt-get install libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 
 echo "installing RFIDIOT"
 wget https://github.com/AdamLaurie/RFIDIOt/archive/master.zip
@@ -52,4 +52,4 @@ pip install pycrypto
 pip install pyscard
 
 #automated start of script TEST!!
-echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart
+#echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart
