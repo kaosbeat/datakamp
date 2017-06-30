@@ -9,9 +9,9 @@ echo "export LANG=en_US.UTF-8" >> ~/.bashrc
 
 # https://choffee.co.uk/posts/2015/01/nfc_reader_acr122_linux/
 # errors while claiming RFID reader solution: CHECK!!
-echo 'blacklist pn533' > /etc/modprobe.d/rfid-blacklist.conf
-echo 'blacklist nfc' > /etc/modprobe.d/rfid-blacklist.conf
-modprobe -r pn533 nfc
+#echo 'blacklist pn533' > /etc/modprobe.d/rfid-blacklist.conf
+#echo 'blacklist nfc' > /etc/modprobe.d/rfid-blacklist.conf
+#modprobe -r pn533 nfc
 # 
 
 apt-get install swig -y
@@ -23,13 +23,13 @@ apt-get install python-dev -y
 
 
 # Install libNFC? CHECK!!
-cd ~
-wget http://dl.bintray.com/nfc-tools/sources/libnfc-1.7.1.tar.bz2
-tar -xf libnfc-1.7.1.tar.bz2  
-cd libnfc-1.7.1
-./configure --prefix=/usr --sysconfdir=/etc
-make
-sudo make install 
+#cd ~
+#wget http://dl.bintray.com/nfc-tools/sources/libnfc-1.7.1.tar.bz2
+#tar -xf libnfc-1.7.1.tar.bz2  
+#cd libnfc-1.7.1
+#./configure --prefix=/usr --sysconfdir=/etc
+#make
+#sudo make install 
 #
 apt-get install libjpeg-dev 
 #more dependencies necessary? CHECK!!
