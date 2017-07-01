@@ -83,7 +83,7 @@ def listen_remove(card, interval, card_id):
 		time.sleep(interval)
 
 def playAudio(userType):
-    playsound('~/Documents/datakamp/soundboard/WC/kakken.mp3').
+    playsound('~/Documents/datakamp/soundboard/WC/kakken.mp3')
     return none
         
 ##setup stuff
