@@ -83,7 +83,8 @@ def listen_remove(card, interval, card_id):
 
 def playAudio(userType):
     mixer.init()
-    mixer.music.load('~/Documents/datakamp/soundboard/WC/kakken.mp3')
+    mixer.music.load('kakken.mp3')
+   # mixer.music.load('~/Documents/datakamp/soundboard/WC/kakken.mp3')
     mixer.music.play()
     return none
         
