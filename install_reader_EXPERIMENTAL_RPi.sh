@@ -19,7 +19,7 @@ apt-get install libpcsclite-dev -y
 apt-get install libusb-dev -y
 apt-get install pcscd -y
 apt-get install python-dev -y
-
+apt-get install python-gobject -y
 
 
 # Install libNFC? CHECK!!
@@ -50,6 +50,8 @@ pip install termcolor
 pip install pyfiglet
 pip install pycrypto
 pip install pyscard
+pip install gi
+pip install playsound
 
 #automated start of script TEST!!
 #echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart

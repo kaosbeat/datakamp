@@ -19,8 +19,7 @@ from termcolor import cprint
 from pyfiglet import figlet_format
 from RFIDapi import logAction,getVistorActions
 from screensavers import *
-
-from playsound import playsound
+from pygame import mixer
 
 import config
 
@@ -83,7 +82,9 @@ def listen_remove(card, interval, card_id):
 		time.sleep(interval)
 
 def playAudio(userType):
-    playsound('~/Documents/datakamp/soundboard/WC/kakken.mp3')
+    mixer.init()
+    mixer.music.load('~/Documents/datakamp/soundboard/WC/kakken.mp3')
+    mixer.music.play()
     return none
         
 ##setup stuff
