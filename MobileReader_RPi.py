@@ -86,7 +86,7 @@ def playAudio(userType):
     mixer.music.load('kakken.mp3')
    # mixer.music.load('~/Documents/datakamp/soundboard/WC/kakken.mp3')
     mixer.music.play()
-    return none
+    return None
         
 ##setup stuff
 # Open the card reader
