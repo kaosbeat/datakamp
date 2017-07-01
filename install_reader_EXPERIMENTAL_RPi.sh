@@ -9,16 +9,17 @@ echo "export LANG=en_US.UTF-8" >> ~/.bashrc
 
 # https://choffee.co.uk/posts/2015/01/nfc_reader_acr122_linux/
 # errors while claiming RFID reader solution: CHECK!!
-echo 'blacklist pn533' > /etc/modprobe.d/rfid-blacklist.conf
-echo 'nfc' > /etc/modprobe.d/rfid-blacklist.conf
-modprobe -r pn533 nfc
+#echo 'blacklist pn533' > /etc/modprobe.d/rfid-blacklist.conf
+#echo 'blacklist nfc' > /etc/modprobe.d/rfid-blacklist.conf
+#modprobe -r pn533 nfc
 # 
 
-apt-get install swig
-apt-get install libpcsclite-dev
-apt-get install libusb-dev
-apt-get install pcscd
-pip install pyscard
+apt-get install swig -y
+apt-get install libpcsclite-dev -y
+apt-get install libusb-dev -y
+apt-get install pcscd -y
+apt-get install python-dev -y
+
 
 
 # Install libNFC? CHECK!!
@@ -30,9 +31,11 @@ pip install pyscard
 #make
 #sudo make install 
 #
+#apt-get install libjpeg-dev 
+#more dependencies necessary? CHECK!!
+apt-get install libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 
 echo "installing RFIDIOT"
-
 wget https://github.com/AdamLaurie/RFIDIOt/archive/master.zip
 unzip master.zip
 cd RFIDIOt-master
@@ -40,17 +43,13 @@ python ./setup.py install
 cd ..
 
 echo "installing some more dependencies"
-
-apt-get install libjpeg-dev 
-#more dependencies necessary? CHECK!!
-#apt-get install libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
-
 pip install asciimatics
 pip install requests
 pip install colorama
 pip install termcolor
 pip install pyfiglet
 pip install pycrypto
+pip install pyscard
 
 #automated start of script TEST!!
-echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart
+#echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart

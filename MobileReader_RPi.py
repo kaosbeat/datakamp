@@ -65,6 +65,9 @@ def listen(card, interval):
                 playAudio('visitortype')
             else:
                 print "no post"
+
+            		else:
+                		print "no post"
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
