@@ -88,6 +88,8 @@ def playAudio(userType):
         
 ##setup stuff
 # Open the card reader
+playAudio('visitortype')
+
 card = open_reader()
 card_info = card.info('cardselect v0.1m')
 
