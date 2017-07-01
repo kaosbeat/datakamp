@@ -20,6 +20,8 @@ from pyfiglet import figlet_format
 from RFIDapi import logAction,getVistorActions
 from screensavers import *
 
+from playsound import playsound
+
 import config
 
 readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
@@ -60,6 +62,7 @@ def listen(card, interval):
 				print ("huidige status: ")
 				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 				# print ("naam: " + str(data['name']) )
+                playAudio('visitortype')
             else:
                 print "no post"
 			break
@@ -81,6 +84,10 @@ def listen_remove(card, interval, card_id):
 		#print "Waiting: Card Removal"
 		time.sleep(interval)
 
+def playAudio(userType):
+    playsound('~/Documents/datakamp/soundboard/WC/kakken.mp3')
+    return none
+        
 ##setup stuff
 # Open the card reader
 card = open_reader()
