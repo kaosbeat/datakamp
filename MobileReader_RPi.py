@@ -62,12 +62,7 @@ def listen(card, interval):
 				print ("huidige status: ")
 				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 				# print ("naam: " + str(data['name']) )
-		                playAudio('visitortype')
-            else:
-                print "no post"
-
-            		else:
-                		print "no post"
+                playAudio('visitortype')
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
@@ -88,7 +83,7 @@ def listen_remove(card, interval, card_id):
 		time.sleep(interval)
 
 def playAudio(userType):
-    playsound('~/Documents/datakamp/soundboard/WC/kakken.mp3')
+    playsound('~/Documents/datakamp/soundboard/WC/kakken.mp3').
     return none
         
 ##setup stuff
