@@ -61,7 +61,7 @@ def listen(card, interval):
 				print ("huidige status: ")
 				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 				# print ("naam: " + str(data['name']) )
-                playAudio('visitortype')
+                # playAudio('visitortype')
 			    
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
