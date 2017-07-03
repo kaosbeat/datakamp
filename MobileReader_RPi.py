@@ -62,10 +62,9 @@ def listen(card, interval):
 				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 				# print ("naam: " + str(data['name']) )
                 playAudio('visitortype')
-			    
-		#print 'Waiting: Card Placement'
+                break
+        #print 'Waiting: Card Placement'
 		time.sleep(interval)
-
 	return card.uid
 
 def listen_remove(card, interval, card_id):
@@ -90,8 +89,6 @@ def playAudio(userType):
         
 ##setup stuff
 # Open the card reader
-playAudio('visitortype')
-
 card = open_reader()
 card_info = card.info('cardselect v0.1m')
 
