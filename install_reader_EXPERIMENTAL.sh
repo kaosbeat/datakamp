@@ -7,9 +7,12 @@
 echo "export LC_ALL=en_US.UTF-8" >> /home/chip/.bashrc
 echo "export LANG=en_US.UTF-8" >> /home/chip/.bashrc
 
-apt-get install swig
-apt-get install libpcsclite-dev
-apt-get install pcscd
+apt-get install swig -y
+apt-get install libpcsclite-dev -y
+apt-get install pcscd -y
+apt-get install libjpeg-dev -y
+apt-get install zlib1g-dev -y
+apt-get install python-pip python-dev build-essential -y
 pip install pyscard
 
 
@@ -23,7 +26,6 @@ cd ..
 
 echo "installing some more dependencies"
 
-apt-get install libjpeg-dev 
 pip install asciimatics
 pip install requests
 pip install colorama
