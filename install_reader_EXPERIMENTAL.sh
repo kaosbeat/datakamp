@@ -13,7 +13,7 @@ apt-get install pcscd -y
 apt-get install libjpeg-dev -y
 apt-get install zlib1g-dev -y
 apt-get install python-pip python-dev build-essential -y
-pip install pyscard
+
 
 
 echo "installing RFIDIOT"
@@ -31,3 +31,5 @@ pip install requests
 pip install colorama
 pip install termcolor
 pip install pyfiglet
+pip install pyscard
+pip install CHIP-IO
