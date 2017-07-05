@@ -83,7 +83,7 @@ def listen_remove(card, interval, card_id):
 def playAudio(userType, location):
     mixer.init()
     dir = os.path.dirname(__file__)
-	print location
+    print location
     if "Basic" in userType: 
     	filename = os.path.join(dir, 'soundboard/',location,'/Flush.mp3')
     else :
