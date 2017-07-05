@@ -61,7 +61,7 @@ def listen(card, interval):
 				print ("huidige status: ")
 				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 				# print ("naam: " + str(data['name']) )
-                		playAudio('visitortype')
+                    		playAudio(str(data['visitortype']))
            		break
         #print 'Waiting: Card Placement'
 		time.sleep(interval)
@@ -83,10 +83,12 @@ def listen_remove(card, interval, card_id):
 def playAudio(userType):
     mixer.init()
     dir = os.path.dirname(__file__)
+
     if "Basic" in userType: 
     	filename = os.path.join(dir, 'soundboard/WC/Flush.mp3')
     else :
         filename = os.path.join(dir, 'soundboard/WC/kakken_kort.mp3')
+
     mixer.music.load(filename)
     mixer.music.play()
     return None
