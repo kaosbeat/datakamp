@@ -19,6 +19,7 @@ from termcolor import cprint
 from pyfiglet import figlet_format
 from RFIDapi import logAction,getVistorActions
 from screensavers import *
+from pygame import mixer
 
 import config
 
@@ -56,6 +57,7 @@ def listen(card, interval):
 				print ("huidige status: ")
 				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 				# print ("naam: " + str(data['name']) )
+			    playAudio('visitortype')
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
@@ -75,6 +77,18 @@ def listen_remove(card, interval, card_id):
 		#print "Waiting: Card Removal"
 		time.sleep(interval)
 
+def playAudio(userType):
+    mixer.init()
+    dir = os.path.dirname(__file__)
+    print dir
+    filename = os.path.join(dir, 'soundboard/WC/kakken_kort.mp3')
+    print filename
+   # mixer.music.load(filename)
+    mixer.music.load('/home/pi/Documents/datakamp/soundboard/WC/kakken_kort.mp3')
+    mixer.music.play()
+    return None
+    
+    
 ##setup stuff
 # Open the card reader
 card = open_reader()
