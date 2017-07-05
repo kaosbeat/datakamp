@@ -13,6 +13,7 @@ apt-get install pcscd -y
 apt-get install libjpeg-dev -y
 apt-get install zlib1g-dev -y
 apt-get install python-pip python-dev build-essential -y
+apt-get build-dep python-pygame
 
 
 
@@ -33,3 +34,4 @@ pip install termcolor
 pip install pyfiglet
 pip install pyscard
 pip install CHIP-IO
+pip install pygame
