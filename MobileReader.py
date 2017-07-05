@@ -80,10 +80,9 @@ def listen_remove(card, interval, card_id):
 def playAudio(userType):
     mixer.init()
     dir = os.path.dirname(__file__)
-    print dir
+    if "Basic" in userType: 
+    	continue
     filename = os.path.join(dir, 'soundboard/WC/kakken_kort.mp3')
-    print filename
-   # mixer.music.load(filename)
     mixer.music.load(filename)
     mixer.music.play()
     return None
