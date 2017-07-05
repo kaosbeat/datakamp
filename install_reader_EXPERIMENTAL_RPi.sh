@@ -20,6 +20,9 @@ apt-get install libusb-dev -y
 apt-get install pcscd -y
 apt-get install python-dev -y
 apt-get install python-gobject -y
+apt-get install libjpeg-dev -y
+apt-get install zlib1g-dev -y
+apt-get install python-pip build-essential -y
 
 
 # Install libNFC? CHECK!!
@@ -33,7 +36,7 @@ apt-get install python-gobject -y
 #
 #apt-get install libjpeg-dev 
 #more dependencies necessary? CHECK!!
-apt-get install libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+#apt-get install libtiff5-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 
 echo "installing RFIDIOT"
 wget https://github.com/AdamLaurie/RFIDIOt/archive/master.zip
