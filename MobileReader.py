@@ -84,7 +84,7 @@ def playAudio(userType):
     filename = os.path.join(dir, 'soundboard/WC/kakken_kort.mp3')
     print filename
    # mixer.music.load(filename)
-    mixer.music.load('/home/pi/Documents/datakamp/soundboard/WC/kakken_kort.mp3')
+    mixer.music.load(filename)
     mixer.music.play()
     return None
     
