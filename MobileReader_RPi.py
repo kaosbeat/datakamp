@@ -85,9 +85,9 @@ def playAudio(userType, location):
     dir = os.path.dirname(__file__)
     print location
     if "Basic" in userType: 
-    	filename = os.path.join(dir, 'soundboard/',location,'/Flush.mp3')
+    	filename = os.path.join(dir, 'soundboard/',location,'Flush.mp3')
     else :
-        filename = os.path.join(dir, 'soundboard/WC/kakken_kort.mp3')
+        filename = os.path.join(dir, 'soundboard/',location,'kakken_kort.mp3')
 
     mixer.music.load(filename)
     mixer.music.play()
