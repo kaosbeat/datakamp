@@ -36,6 +36,8 @@ pip install pyfiglet
 pip install pyscard
 pip install CHIP-IO
 pip install pygame
+pip install pycrypto
+
 
 cp libccid_Info.plist /etc/libccid_Info.plist
 cd RFIDIOt-master
