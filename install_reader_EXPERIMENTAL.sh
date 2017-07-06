@@ -14,6 +14,7 @@ apt-get install libjpeg-dev -y
 apt-get install zlib1g-dev -y
 apt-get install python-pip python-dev build-essential -y
 apt-get build-dep python-pygame
+apt-get install openssh-server 
 
 
 
