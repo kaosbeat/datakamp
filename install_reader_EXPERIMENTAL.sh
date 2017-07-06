@@ -42,5 +42,8 @@ pip install pycrypto
 
 
 cp libccid_Info.plist /etc/libccid_Info.plist
+
+#!/usr/bin/env python
+
 cd RFIDIOt-master
 python ./setup.py install
