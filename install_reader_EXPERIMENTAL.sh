@@ -36,3 +36,5 @@ pip install pyfiglet
 pip install pyscard
 pip install CHIP-IO
 pip install pygame
+
+cp libccid_Info.plist /etc/libccid_Info.plist
