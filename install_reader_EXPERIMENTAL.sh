@@ -38,3 +38,5 @@ pip install CHIP-IO
 pip install pygame
 
 cp libccid_Info.plist /etc/libccid_Info.plist
+cd RFIDIOt-master
+python ./setup.py install
