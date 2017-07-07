@@ -57,7 +57,7 @@ def listen(card, interval):
                 post = logIngang(readerid, card.uid, "mobilescan")
                 screensaverstate = 0
                 if post:
-                    # data = getVistorActions(card.uid)
+                    data = getVistorActions(card.uid)
                     #print data
                     #print ("aantal punten: " + str(data['credits']))
                     #print ("huidige status: ")
@@ -95,10 +95,42 @@ def listen(card, interval):
                 break
             
             if (readerid=="Stempaal"):
+                data = logStem (readerid, card.uid, "AA")
+#                print data
+#                print ("aantal punten: " + str(data['credits']))
+#                print ("huidige status: ")
+#                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+#                print ("naam: " + str(data['name']) )
+#                break
                 break
             if (readerid=="Playfield"):
+            ##############################################################
+                post = logPlay(readerid, card.uid, "unique ID")
+            ##############################################################
+                screensaverstate = 0
+                if post:
+                    data = getVistorActions(card.uid)
+                    #print data
+                    #print ("aantal punten: " + str(data['credits']))
+                    #print ("huidige status: ")
+                    #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+                    # print ("naam: " + str(data['name']) )
+                    playAudio(str(data['visitortype']), readerid)
+                    break
                 break
             if (readerid=="Gili"):
+                #post = logAction(readerid, card.uid, "mobilescan")
+                post = logGili(readerid, card.uid, "Gili")
+                screensaverstate = 0
+                if post:
+                    data = getVistorActions(card.uid)
+#                    print data
+#                    print ("aantal punten: " + str(data['credits']))
+#                    print ("huidige status: ")
+#                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+#                    print ("naam: " + str(data['name']) )
+                    playAudio(str(data['visitortype']), readerid)
+                    break
                 break
             if (readerid=="WC"):
                 break
@@ -123,15 +155,22 @@ def listen_remove(card, interval, card_id):
 			break
 		#print "Waiting: Card Removal"
 		time.sleep(interval)
-
+        
+#Make a folder structure with 
 def playAudio(userType, location):
     mixer.init()
     dir = os.path.dirname(__file__)
     print location
     if "Basic" in userType: 
-    	filename = os.path.join(dir, 'soundboard/',location,'Flush.mp3')
-    else :
-        filename = os.path.join(dir, 'soundboard/',location,'kakken_kort.mp3')
+    	filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')
+        
+    else if "Premium VIP" in userType :
+        filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
+        
+        else: 
+            filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
+            
+
 
     mixer.music.load(filename)
     mixer.music.play()

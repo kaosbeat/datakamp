@@ -20,4 +20,12 @@ sudo python ./setup.py install
 
 
 If you get error failed to transmit with protocol T1:
-rerun the install script
+rerun the install script in datakamp folder
+
+
+IP MGMT:
+WC      192.168.x.x
+
+
+
+
