@@ -3,3 +3,14 @@ settings = {
 "readerType": "mobile",
 "readerID": "M1"
 }
+# types of readerID:
+# Ingang
+# Premium
+# Kassa
+# Bar
+# Stempaal
+# Playfield
+# Gili
+# WC
+# Lichtpaal
+# Uitgang

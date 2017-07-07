@@ -48,7 +48,9 @@ def listen(card, interval):
 		# print("now is the time to exit the program by CTRL-C")
 		# time.sleep(2)
 		if card.select():
-			post = logAction(readerid, card.uid, "mobilescan")
+			#post = logAction(readerid, card.uid, "mobilescan")
+            post = logIngang(readerid, card.uid, "mobilescan")
+
 			screensaverstate = 0
 			if post:
 				data = getVistorActions(card.uid)

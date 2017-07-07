@@ -52,17 +52,61 @@ def listen(card, interval):
 		# print("now is the time to exit the program by CTRL-C")
 		# time.sleep(2)
 		if card.select():
-			post = logAction(readerid, card.uid, "mobilescan")
-			screensaverstate = 0
-			if post:
-				data = getVistorActions(card.uid)
-				print data
-				print ("aantal punten: " + str(data['credits']))
-				print ("huidige status: ")
-				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-				# print ("naam: " + str(data['name']) )
-                    		playAudio(str(data['visitortype']), readerid)
-           		break
+            if (readerid=="Ingang"):
+                #post = logAction(readerid, card.uid, "mobilescan")
+                post = logIngang(readerid, card.uid, "mobilescan")
+                screensaverstate = 0
+                if post:
+                    # data = getVistorActions(card.uid)
+                    #print data
+                    #print ("aantal punten: " + str(data['credits']))
+                    #print ("huidige status: ")
+                    #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+                    # print ("naam: " + str(data['name']) )
+                    playAudio(str(data['visitortype']), readerid)
+                    break
+                break
+            # TBD    
+            if (readerid=="Premium"):
+                #tbd
+                break
+            #KASSA geluid (en licht?) afspelen bij succes via POST
+            if (readerid=="Kassa"):
+                post = logIngang(readerid, card.uid, "ADK")
+                screensaverstate = 0
+                if post:
+                    playAudio(str(data['visitortype']), readerid)
+                    break
+                break
+            #BAR geluid en licht tot GPIO input gegeven via POST
+            if (readerid=="Bar"):
+                #post = logAction(readerid, card.uid, "mobilescan")
+                data = logBar(readerid, card.uid, "Bar")
+                print data
+                print ("aantal punten: " + str(data['credits']))
+                print ("huidige status: ")
+                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+                print ("naam: " + str(data['name']) )
+                if(str(data['visitortype'])=="Premium VIP"):
+                    ####################
+                    premiumVipHell()
+                    ####################
+                    break
+                break
+            
+            if (readerid=="Stempaal"):
+                break
+            if (readerid=="Playfield"):
+                break
+            if (readerid=="Gili"):
+                break
+            if (readerid=="WC"):
+                break
+            if (readerid=="Lichtpaal"):
+                break
+            if (readerid=="Uitgang"):
+                break
+                
         #print 'Waiting: Card Placement'
 		time.sleep(interval)
 	return card.uid
@@ -92,7 +136,14 @@ def playAudio(userType, location):
     mixer.music.load(filename)
     mixer.music.play()
     return None
-        
+       
+################################################################################    
+def premiumVipHell():
+    while (GPIO1!=0):
+        playAudio(str(data['visitortype']), readerid)
+        lightOn()
+################################################################################  
+    
 ##setup stuff
 # Open the card reader
 card = open_reader()
