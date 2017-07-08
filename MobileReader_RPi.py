@@ -133,6 +133,7 @@ def listen(card, interval):
                     break
                 break
             if (readerid=="WC"):
+                
                 break
             if (readerid=="Lichtpaal"):
                 break
