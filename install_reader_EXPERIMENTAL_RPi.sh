@@ -7,7 +7,7 @@
 echo "export LC_ALL=en_US.UTF-8" >> ~/.bashrc
 echo "export LANG=en_US.UTF-8" >> ~/.bashrc
 echo "python datakamp/MobileReader_RPi.py &" >> ~/.bashrc
-
+echo "amixer cset numid=3 1" >> ~/.bashrc
 # https://choffee.co.uk/posts/2015/01/nfc_reader_acr122_linux/
 # errors while claiming RFID reader solution: CHECK!!
 #echo 'blacklist pn533' > /etc/modprobe.d/rfid-blacklist.conf
