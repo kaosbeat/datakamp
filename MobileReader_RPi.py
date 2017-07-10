@@ -32,7 +32,7 @@ readerid = config.settings['readerID']
 ################################################################################    
 def premiumVipHell(data):
     print ("premiumVipHell "+str(barSignal))
-    if barSignal:
+    while barSignal:
         playAudio(str(data['visitortype']), readerid)
         GPIO.output(4,1)
 ################################################################################  
