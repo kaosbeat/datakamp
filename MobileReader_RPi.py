@@ -38,7 +38,7 @@ def premiumVipHell(data):
 def stopHell(channel):
     print "button pressed!"
     barSignal=0
-    GPIO.outpout(4,0)
+    GPIO.output(4,0)
 
 #GPIO Config RPi#
 GPIO.setmode(GPIO.BCM)
@@ -178,8 +178,10 @@ def listen_remove(card, interval, card_id):
         
 #Make a folder structure with 
 def playAudio(userType, location):
+    print "playaudio"
     if not mixer.music.get_busy():
 #         mixer.init()
+        print "first play"
         dir = os.path.dirname(__file__)
         print location
         if "Basic" in userType: 
