@@ -37,6 +37,7 @@ def premiumVipHell(data):
     GPIO.outpout(4,0)
 ################################################################################  
 def stopHell():
+    print "button pressed!"
     barSignal=0
 #GPIO Config RPi#
 GPIO.setmode(GPIO.BCM)
@@ -106,7 +107,7 @@ def listen(card, interval):
 			    ####################
 			    print("Premium VIP")
 			    barSignal=1
-			    premiumVipHell(data)
+#			    premiumVipHell(data)
 			    ####################
 			    break
 		    break
