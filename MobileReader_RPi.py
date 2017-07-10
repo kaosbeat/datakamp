@@ -175,7 +175,7 @@ def listen_remove(card, interval, card_id):
         
 #Make a folder structure with 
 def playAudio(userType, location):
-    if not pygame.mixer.music.get_busy():
+    if not mixer.music.get_busy():
         mixer.init()
         dir = os.path.dirname(__file__)
         print location
