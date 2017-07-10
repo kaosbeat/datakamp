@@ -27,7 +27,7 @@ import config
 readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
 state = 0 
 screensaverstate = 0
-barSignal = 1
+barSignal = 0
 
 readerid = config.settings['readerID']
 ################################################################################    
@@ -39,9 +39,10 @@ def premiumVipHell(data):
 	time.sleep(4)
 ################################################################################  
 def stopHell(channel):
-    print "button pressed!"
     barSignal=0
-    GPIO.output(4,0)
+    GPIO.output(4,0)    
+    print "button pressed!"
+
 
 #GPIO Config RPi#
 GPIO.setmode(GPIO.BCM)
