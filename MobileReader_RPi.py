@@ -26,12 +26,15 @@ import config
 readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
 state = 0 
 screensaverstate = 0
+barSignal = 1
 
 readerid = config.settings['readerID']
 
 #GPIO Config RPi#
 GPIO.setmode(GPIO.BCM)
-
+GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #input for button, connected to 3.3V so pull down resistor
+GPIO.setup(4, GPIO.OUT) #output for relay
+GPIO.add_event_detect(21, GPIO.FALLING, callback=stopHell, bouncetime=300)
 
 # Card reader Functions
 def open_reader():
@@ -82,13 +85,15 @@ def listen(card, interval):
             if (readerid=="Bar"):
                 #post = logAction(readerid, card.uid, "mobilescan")
                 data = logBar(readerid, card.uid, "Bar")
-                print data
-                print ("aantal punten: " + str(data['credits']))
-                print ("huidige status: ")
-                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-                print ("naam: " + str(data['name']) )
+#                print data
+#                print ("aantal punten: " + str(data['credits']))
+#                print ("huidige status: ")
+#                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+#                print ("naam: " + str(data['name']) )
                 if(str(data['visitortype'])=="Premium VIP"):
                     ####################
+                    print("Premium VIP")
+                    barSignal=1
                     premiumVipHell()
                     ####################
                     break
@@ -159,31 +164,30 @@ def listen_remove(card, interval, card_id):
         
 #Make a folder structure with 
 def playAudio(userType, location):
-    mixer.init()
-    dir = os.path.dirname(__file__)
-    print location
-    if "Basic" in userType: 
-    	filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')
-        
-    else if "Premium VIP" in userType :
-        filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
-        
-        else: 
-            filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
-            
+    if(!pygame.mixer.music.get_busy()):
+        mixer.init()
+        dir = os.path.dirname(__file__)
+        print location
+        if "Basic" in userType: 
+            filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
+        else if "Premium VIP" in userType :
+            filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
 
-
-    mixer.music.load(filename)
-    mixer.music.play()
+            else: 
+                filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
+        mixer.music.load(filename)
+        mixer.music.play()
     return None
        
 ################################################################################    
 def premiumVipHell():
-    while (GPIO1!=0):
+    while barSignal:
         playAudio(str(data['visitortype']), readerid)
-        lightOn()
+        GPIO.output(4,1)
+    GPIO.outpout(4,0)
 ################################################################################  
-    
+def stopHell():
+    barSignal=0
 ##setup stuff
 # Open the card reader
 card = open_reader()
@@ -196,6 +200,7 @@ card_info = card.info('cardselect v0.1m')
 while 1:
 	card_id = listen(card, 0.1)
 	listen_remove(card, 0.1, card_id)
+#    GPIO.cleanup()    
 
 
 #Read RFID

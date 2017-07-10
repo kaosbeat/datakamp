@@ -10,7 +10,7 @@ def remapID(ID):
 
 def logAction(readerid, visitorid, actionid):
 
-	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "A00"}
+	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": actionid}
 	print data
 	endpoint = "http://35.157.49.30:8080/api/log"
 	print("now posting")
