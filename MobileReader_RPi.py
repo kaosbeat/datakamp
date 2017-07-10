@@ -187,6 +187,7 @@ def playAudio(userType, location):
             		filename = os.path.join(dir, 'soundboard/',location,'premium_vip.wav')
 		else: 
                 	filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
+        print filename
         mixer.music.load(filename)
         mixer.music.play()
     else:
