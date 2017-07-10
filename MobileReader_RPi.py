@@ -11,6 +11,7 @@
 import os,sys
 import time
 import json
+import time
 import rfidiot
 import RPi.GPIO as GPIO
 from colorama import init
