@@ -86,13 +86,14 @@ def logBar(readerid, visitorid, actionid):
 	print data
 	endpoint = "http://35.157.49.30:8080/api/checkvisitor/" + str(visitorid)
 	print("now getting" + endpoint)
-	response = requests.get(endpoint)
-	if (response.status_code == 200):
+	response = requests.post(endpoint)
+	if (response.status_code == 201):
 		print("succesfully logged action")
 		print("status_code" + str(response.status_code))
 		# return (random.randint(3))
 		# returndata = { "totalscans": random.randint(1,68), "currentplan": "VIP", "name" : "Pierke", "lastname": "Van Gent" }
-		return response.status_code
+        returndata = response.json()
+        return returndata
 	else:
 		print("something went wrong")
 		print("status_code" + str(response.status_code))
