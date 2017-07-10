@@ -192,8 +192,8 @@ def playAudio(userType, location):
         print filename
         mixer.music.load(filename)
         mixer.music.play()
-    else:
-	print("audio already playing")
+#    else:
+#	print("audio already playing")
     return None
        
 
