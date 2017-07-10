@@ -36,7 +36,7 @@ def premiumVipHell(data):
         GPIO.output(4,1)
     GPIO.outpout(4,0)
 ################################################################################  
-def stopHell():
+def stopHell(channel):
     print "button pressed!"
     barSignal=0
 #GPIO Config RPi#
