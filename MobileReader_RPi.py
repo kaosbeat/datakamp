@@ -29,7 +29,16 @@ screensaverstate = 0
 barSignal = 1
 
 readerid = config.settings['readerID']
-
+################################################################################    
+def premiumVipHell():
+    while barSignal:
+        print("audio already playing")
+        playAudio(str(data['visitortype']), readerid)
+        GPIO.output(4,1)
+    GPIO.outpout(4,0)
+################################################################################  
+def stopHell():
+    barSignal=0
 #GPIO Config RPi#
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #input for button, connected to 3.3V so pull down resistor
@@ -179,16 +188,7 @@ def playAudio(userType, location):
         mixer.music.play()
     return None
        
-################################################################################    
-def premiumVipHell():
-    while barSignal:
-        print("audio already playing")
-        playAudio(str(data['visitortype']), readerid)
-        GPIO.output(4,1)
-    GPIO.outpout(4,0)
-################################################################################  
-def stopHell():
-    barSignal=0
+
 ##setup stuff
 # Open the card reader
 card = open_reader()
