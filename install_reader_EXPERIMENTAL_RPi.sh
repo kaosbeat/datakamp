@@ -64,4 +64,5 @@ cp libccid_Info.plist /etc/libccid_Info.plist
 #!/usr/bin/env python
 
 cd RFIDIOt-master
+chmod +x setup.py
 python ./setup.py install
