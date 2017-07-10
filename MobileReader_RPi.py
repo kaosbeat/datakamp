@@ -180,7 +180,7 @@ def playAudio(userType, location):
         dir = os.path.dirname(__file__)
         print location
         if "Basic" in userType: 
-            filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
+            filename = os.path.join(dir, 'soundboard/',location,'basic.wav')       
         else: 
 		if "Premium VIP" in userType :
             		filename = os.path.join(dir, 'soundboard/',location,'premium_vip.wav')
