@@ -41,7 +41,7 @@ def premiumVipHell(data):
 def stopHell(channel):
     print "button pressed!"
     GPIO.output(4,0)    
-    barSignal=0
+    global barSignal=0
 
 
 
@@ -114,7 +114,7 @@ def listen(card, interval):
 			    ####################
 			    print "premiumVipHell"
 			    premiumVipHell(data)    
-			    barSignal=1
+			    global barSignal=1
 			    
 			    ####################
 			    break
