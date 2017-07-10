@@ -100,7 +100,9 @@ def listen(card, interval):
 	#                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 	#                print ("naam: " + str(data['name']) )
 			print(str(data['visitortype']))
-            		if(str(data['visitortype'])=="Premium VIP"):
+#            		if(str(data['visitortype'])=="Premium VIP"):
+                    if(str(data['visitortype'])=="Basic"):
+
 			    ####################
 			    print("Premium VIP")
 			    barSignal=1
