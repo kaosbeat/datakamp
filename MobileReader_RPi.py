@@ -108,9 +108,10 @@ def listen(card, interval):
                     	if(str(data['visitortype'])=="Basic"):
 
 			    ####################
-			    print("Premium VIP")
-			    barSignal=1
 			    premiumVipHell(data)
+			    print("after Premium VIP")
+			    barSignal=1
+			    
 			    ####################
 			    break
 		    break
