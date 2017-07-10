@@ -219,9 +219,9 @@ try:
 except KeyboardInterrupt:
 	print "keyboard interrupt!"
         GPIO.cleanup()
-except:
-	print "exception!"
-        GPIO.cleanup()
+# except:
+# 	print "exception!"
+#         GPIO.cleanup()
        
 
 
