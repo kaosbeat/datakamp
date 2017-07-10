@@ -31,6 +31,7 @@ barSignal = 1
 readerid = config.settings['readerID']
 ################################################################################    
 def premiumVipHell(data):
+    print ("premiumVipHell "+barSignal)
     if barSignal:
         playAudio(str(data['visitortype']), readerid)
         GPIO.output(4,1)
