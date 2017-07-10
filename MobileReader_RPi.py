@@ -43,7 +43,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #input for button, connected to 3.3V so pull down resistor
 GPIO.setup(4, GPIO.OUT) #output for relay
 GPIO.add_event_detect(21, GPIO.FALLING, callback=stopHell, bouncetime=300)
-
+mixer.init()
 # Card reader Functions
 def open_reader():
 	""" Attempts to open the card reader """
@@ -176,7 +176,7 @@ def listen_remove(card, interval, card_id):
 #Make a folder structure with 
 def playAudio(userType, location):
     if not mixer.music.get_busy():
-        mixer.init()
+#         mixer.init()
         dir = os.path.dirname(__file__)
         print location
         if "Basic" in userType: 
