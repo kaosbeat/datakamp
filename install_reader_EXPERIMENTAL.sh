@@ -4,9 +4,9 @@
 #for the mobile readers we start with standard pocketCHIP firmware (4.4)
 #this script should be run with SUDO
 
-echo "export LC_ALL=en_US.UTF-8" >> /home/chip/.bashrc
-echo "export LANG=en_US.UTF-8" >> /home/chip/.bashrc
-echo "python datakamp/MobileReader.py &" >> ~/.bashrc
+echo 'export LC_ALL=en_US.UTF-8' >> /home/pi/.bashrc
+echo 'export LANG=en_US.UTF-8' >> /home/pi/.bashrc
+echo 'python datakamp/MobileReader.py &' >> /home/pi/.bashrc
 
 
 apt-get install swig -y
