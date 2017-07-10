@@ -35,6 +35,7 @@ def premiumVipHell(data):
     while barSignal:
         playAudio(str(data['visitortype']), readerid)
         GPIO.output(4,1)
+	sleep(4)
 ################################################################################  
 def stopHell(channel):
     print "button pressed!"
