@@ -217,8 +217,10 @@ try:
         card_id = listen(card, 0.1)
 	listen_remove(card, 0.1, card_id)
 except KeyboardInterrupt:
+	print "keyboard interrupt!"
         GPIO.cleanup()
 except:
+	print "exception!"
         GPIO.cleanup()
        
 
