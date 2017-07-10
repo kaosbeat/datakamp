@@ -164,14 +164,14 @@ def listen_remove(card, interval, card_id):
         
 #Make a folder structure with 
 def playAudio(userType, location):
-    if(!pygame.mixer.music.get_busy()):
+    if not pygame.mixer.music.get_busy():
         mixer.init()
         dir = os.path.dirname(__file__)
         print location
         if "Basic" in userType: 
             filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
         else if "Premium VIP" in userType :
-            filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
+            filename = os.path.join(dir, 'soundboard/',location,'premium_vip.wav')
 
             else: 
                 filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
