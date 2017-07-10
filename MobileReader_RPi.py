@@ -182,6 +182,7 @@ def playAudio(userType, location):
 ################################################################################    
 def premiumVipHell():
     while barSignal:
+        print("audio already playing")
         playAudio(str(data['visitortype']), readerid)
         GPIO.output(4,1)
     GPIO.outpout(4,0)
