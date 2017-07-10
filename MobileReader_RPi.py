@@ -114,9 +114,10 @@ def listen(card, interval):
 
 			    ####################
 			    print "premiumVipHell"
-			    premiumVipHell(data)    
 			    global barSignal
-			    barSignal=1
+			    barSignal=1 
+			    premiumVipHell(data)    
+			    
 			    
 			    ####################
 			    break
