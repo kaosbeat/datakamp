@@ -213,7 +213,7 @@ card_info = card.info('cardselect v0.1m')
 while 1:
 	card_id = listen(card, 0.1)
 	listen_remove(card, 0.1, card_id)
-#    GPIO.cleanup()    
+    GPIO.cleanup()    
 
 
 #Read RFID
