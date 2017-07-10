@@ -111,6 +111,7 @@ def listen(card, interval):
                     	if(str(data['visitortype'])=="Basic"):
 
 			    ####################
+			    print "premiumVipHell"
 			    barSignal=1
 			    premiumVipHell(data)
 			    ####################
