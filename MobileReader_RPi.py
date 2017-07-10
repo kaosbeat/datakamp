@@ -30,9 +30,8 @@ barSignal = 1
 
 readerid = config.settings['readerID']
 ################################################################################    
-def premiumVipHell():
+def premiumVipHell(data):
     while barSignal:
-        print("audio already playing")
         playAudio(str(data['visitortype']), readerid)
         GPIO.output(4,1)
     GPIO.outpout(4,0)
@@ -106,7 +105,7 @@ def listen(card, interval):
 			    ####################
 			    print("Premium VIP")
 			    barSignal=1
-			    premiumVipHell()
+			    premiumVipHell(data)
 			    ####################
 			    break
 		    break
@@ -189,6 +188,8 @@ def playAudio(userType, location):
                 	filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
         mixer.music.load(filename)
         mixer.music.play()
+    else:
+	print("audio already playing")
     return None
        
 
