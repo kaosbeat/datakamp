@@ -42,6 +42,7 @@ def stopHell(channel):
     GPIO.output(4,0)
 
 #GPIO Config RPi#
+GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #input for button, connected to 3.3V so pull down resistor
 GPIO.setup(4, GPIO.OUT) #output for relay
