@@ -64,7 +64,7 @@ def listen(card, interval):
 	global screensaverstate
 	while 1:
 		# Screen.wrapper(datascreen)
-		# print("now is the time to exit the program by CTRL-C")
+		print("now is the time to exit the program by CTRL-C")
 		# time.sleep(2)
 		if card.select():
 		    if (readerid=="Ingang"):
