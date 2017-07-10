@@ -34,11 +34,12 @@ def premiumVipHell(data):
     while barSignal:
         playAudio(str(data['visitortype']), readerid)
         GPIO.output(4,1)
-    GPIO.outpout(4,0)
 ################################################################################  
 def stopHell(channel):
     print "button pressed!"
     barSignal=0
+    GPIO.outpout(4,0)
+
 #GPIO Config RPi#
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #input for button, connected to 3.3V so pull down resistor
