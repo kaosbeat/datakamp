@@ -92,8 +92,8 @@ def logBar(readerid, visitorid, actionid):
 		print("status_code" + str(response.status_code))
 		# return (random.randint(3))
 		# returndata = { "totalscans": random.randint(1,68), "currentplan": "VIP", "name" : "Pierke", "lastname": "Van Gent" }
-        returndata = response.json()
-        return returndata
+        	returndata = response.json()
+        	return returndata
 	else:
 		print("something went wrong")
 		print("status_code" + str(response.status_code))
