@@ -101,7 +101,7 @@ def listen(card, interval):
 	#                print ("naam: " + str(data['name']) )
 			print(str(data['visitortype']))
 #            		if(str(data['visitortype'])=="Premium VIP"):
-                    if(str(data['visitortype'])=="Basic"):
+                    	if(str(data['visitortype'])=="Basic"):
 
 			    ####################
 			    print("Premium VIP")
@@ -109,7 +109,7 @@ def listen(card, interval):
 			    premiumVipHell()
 			    ####################
 			    break
-			break
+		    break
 
 		    if (readerid=="Stempaal"):
 			data = logStem (readerid, card.uid, "AA")
