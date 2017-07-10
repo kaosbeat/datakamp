@@ -60,6 +60,8 @@ pip install playsound
 #automated start of script TEST!!
 #echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart
 cp libccid_Info.plist /etc/libccid_Info.plist
+#make sure default audio output = audio jack, NOT HDMI
+amixer cset numid=3 1
 
 #!/usr/bin/env python
 
