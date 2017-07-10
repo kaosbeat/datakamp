@@ -39,9 +39,10 @@ def premiumVipHell(data):
 	time.sleep(4)
 ################################################################################  
 def stopHell(channel):
-    barSignal=0
-    GPIO.output(4,0)    
     print "button pressed!"
+    GPIO.output(4,0)    
+    barSignal=0
+
 
 
 #GPIO Config RPi#
