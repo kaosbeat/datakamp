@@ -42,7 +42,10 @@ pip install pycrypto
 
 
 cp libccid_Info.plist /etc/libccid_Info.plist
+cp interfaces /etc/network/interfaces
 
+#make sure default audio output = audio jack, NOT HDMI
+amixer cset numid=3 1
 #!/usr/bin/env python
 
 cd RFIDIOt-master
