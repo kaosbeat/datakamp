@@ -60,6 +60,9 @@ pip install playsound
 #automated start of script TEST!!
 #echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart
 cp libccid_Info.plist /etc/libccid_Info.plist
+cp interfaces /etc/network/interfaces
+cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+
 #make sure default audio output = audio jack, NOT HDMI
 amixer cset numid=3 1
 
@@ -67,4 +70,4 @@ amixer cset numid=3 1
 
 cd RFIDIOt-master
 chmod +x setup.py
-python ./setup.py install
+python /home/pi/datakamp/RFIDIOt-master/setup.py install

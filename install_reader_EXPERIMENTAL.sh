@@ -43,6 +43,7 @@ pip install pycrypto
 
 cp libccid_Info.plist /etc/libccid_Info.plist
 cp interfaces /etc/network/interfaces
+cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 #make sure default audio output = audio jack, NOT HDMI
 amixer cset numid=3 1
