@@ -4,9 +4,10 @@
 #for the mobile readers we start with standard pocketCHIP firmware (4.4)
 #this script should be run with SUDO
 
-echo 'export LC_ALL=en_US.UTF-8' >> /home/pi/.bashrc
-echo 'export LANG=en_US.UTF-8' >> /home/pi/.bashrc
-echo 'python datakamp/MobileReader.py &' >> /home/pi/.bashrc
+echo 'export LC_ALL=en_US.UTF-8' >> /home/chip/.bashrc
+echo 'export LANG=en_US.UTF-8' >> /home/chip/.bashrc
+echo 'python datakamp/MobileReader.py &' >> /home/chip/.bashrc
+echo 'amixer cset numid=3 1' >> /home/chip/.bashrc
 
 
 apt-get install swig -y
@@ -51,4 +52,4 @@ amixer cset numid=3 1
 
 cd RFIDIOt-master
 chmod +x setup.py
-python ./setup.py install
+python /home/chip/datakamp/RFIDIOt-master/setup.py install
