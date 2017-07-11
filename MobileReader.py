@@ -28,7 +28,7 @@ state = 0
 screensaverstate = 0
 
 readerid = config.settings['readerID']
-
+mixer.init()
 # Card reader Functions
 def open_reader():
 	""" Attempts to open the card reader """
