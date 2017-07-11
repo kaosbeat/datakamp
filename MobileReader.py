@@ -17,7 +17,7 @@ from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint 
 from pyfiglet import figlet_format
-from RFIDapi import logAction,getVistorActions
+from RFIDapi import *
 from screensavers import *
 from pygame import mixer
 
