@@ -49,7 +49,7 @@ def listen(card, interval):
 		# time.sleep(2)
 		if card.select():
 			#post = logAction(readerid, card.uid, "mobilescan")
-            post = logIngang(readerid, card.uid, "mobilescan")
+            		post = logIngang(readerid, card.uid, "mobilescan")
 
 			screensaverstate = 0
 			if post:
@@ -64,7 +64,7 @@ def listen(card, interval):
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
 
-	return card.uid
+		return card.uid
 
 def listen_remove(card, interval, card_id):
 	""" Listens for a card to be placed on the reader """
@@ -80,14 +80,24 @@ def listen_remove(card, interval, card_id):
 		time.sleep(interval)
 
 def playAudio(userType):
-    mixer.init()
-    dir = os.path.dirname(__file__)
-    if "Basic" in userType: 
-    	filename = os.path.join(dir, 'soundboard/WC/Flush.mp3')
-    else :
-        filename = os.path.join(dir, 'soundboard/WC/kakken_kort.mp3')
-    mixer.music.load(filename)
-    mixer.music.play()
+    print "playaudio"
+    if not mixer.music.get_busy():
+#         mixer.init()
+        print "first play"
+        dir = os.path.dirname(__file__)
+        print location
+        if "Basic" in userType: 
+            filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
+        else: 
+		if "Premium VIP" in userType :
+            		filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
+		else: 
+                	filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
+        print filename
+        mixer.music.load(filename)
+        mixer.music.play()
+#    else:
+#	print("audio already playing")
     return None
     
     
