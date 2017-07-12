@@ -75,14 +75,18 @@ def logBrowser(visitorid):
     	data = { "visitor_read_id_id": visitorid}
         endpoint = "https://onboarding.datakamp.be/read-id"
         print "Now transmitting"
-        browser = RoboBrowser(history=True)
-	browser.open('https://cirq:calmD0wn1337!@onboarding.datakamp.be/read-id')
-	form = browser.get_forms()
-	# Now you can fill each elements in form as given below
-	print form
-# 	test= browser.find_all()
-# 	print test
-	
+#         browser = RoboBrowser(history=True)
+# 	browser.open('https://cirq:calmD0wn1337!@onboarding.datakamp.be/read-id')
+# 	form = browser.get_forms()
+# 	# Now you can fill each elements in form as given below
+# 	print form
+# # 	test= browser.find_all()
+# # 	print test
+# 	browser.submit_form
+	element = driver.find_element_by_xpath("//*[@id=\"visitor_read_id_id\"]")
+	all_forms = element.find_elements_by_tag_name("form")
+	for form in all_forms:
+    		print form
 	
 	
 	
