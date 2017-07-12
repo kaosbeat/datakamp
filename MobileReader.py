@@ -49,7 +49,7 @@ def listen(card, interval):
 		# time.sleep(2)
 		if card.select():
 			#post = logAction(readerid, card.uid, "mobilescan")
-            		post = logIngang(readerid, card.uid, "mobilescan")
+            		post = logAction(readerid, card.uid, "AWC")
 
 			screensaverstate = 0
 			if post:
