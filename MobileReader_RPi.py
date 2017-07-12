@@ -99,8 +99,8 @@ def listen(card, interval):
 			if post:
                 		data = getVistorActions(card.uid)
 			    	playAudio(str(data['visitortype']), readerid)
-			break
-		    break
+				break
+		    	break
 		    #BAR geluid en licht tot GPIO input gegeven via POST
 #		    if "Bar" in readerid:
             	    if (readerid=="Bar"):
@@ -119,17 +119,17 @@ def listen(card, interval):
 			    
 			    ####################
 			    break
-		    break
+		    	break
 
 		    if (readerid=="Stempaal"):
-			 data = logAction (readerid, card.uid, "AA")
+			data = logAction (readerid, card.uid, "AA")
 	#                print data
 	#                print ("aantal punten: " + str(data['credits']))
 	#                print ("huidige status: ")
 	#                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 	#                print ("naam: " + str(data['name']) )
 	#                break
-		    break
+		    	break
 		    if (readerid=="Playfield"):
                 ##############################################################
                 	post = logAction(readerid, card.uid, "unique ID")
@@ -143,8 +143,8 @@ def listen(card, interval):
                     #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
                     # print ("naam: " + str(data['name']) )
                     		playAudio(str(data['visitortype']), readerid)
-                    	break
-		    break
+                    		break
+		    	break
 		    if (readerid=="Gili"):
                 #post = logAction(readerid, card.uid, "mobilescan")
                 	post = logAction(readerid, card.uid, "Gili")
@@ -157,8 +157,8 @@ def listen(card, interval):
         #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
         #                    print ("naam: " + str(data['name']) )
                     		playAudio(str(data['visitortype']), readerid)
-                    	break
-		    break
+                    		break
+		    	break
 		    if (readerid=="WC"):
                 	post = logAction(readerid, card.uid, "AWC")
                 	screensaverstate = 0
@@ -170,12 +170,12 @@ def listen(card, interval):
         #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
         #                    print ("naam: " + str(data['name']) )
                     		playAudio(str(data['visitortype']), readerid)
-                    	break
-		    break
+                    		break
+		    	break
 		    if (readerid=="Lichtpaal"):
                 	data = getVistorActions(card.uid)
                 # INSERT DMX CODE HERE KASPER
-		    break
+		    	break
 		    if (readerid=="Uitgang"):
                 	post = logAction(readerid, card.uid, "A99")
                 	screensaverstate = 0
@@ -187,8 +187,8 @@ def listen(card, interval):
         #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
         #                    print ("naam: " + str(data['name']) )
                     		playAudio(str(data['visitortype']), readerid)
-                    	break
-		    break
+                    		break
+		    	break
 
         #print 'Waiting: Card Placement'
 		time.sleep(interval)
