@@ -79,7 +79,7 @@ def logBrowser(visitorid):
 	browser.open('https://onboarding.datakamp.be/read-id')
 	form = browser.get_forms()
 	# Now you can fill each elements in form as given below
-	print form[0]	
+	print form
 	
 	
 	
