@@ -22,6 +22,8 @@ from RFIDapi import *
 from screensavers import *
 from pygame import mixer
 from selenium import webdriver
+import webbrowser
+from robobrowser import RoboBrowser
 
 
 import config
@@ -52,25 +54,35 @@ def listen(card, interval):
 		# time.sleep(2)
 		if card.select():
 			post= logOnboarding(readerid,  card.uid)
-			print data
-			print ("aantal punten: " + str(data['credits']))
-			print ("huidige status: ")
-			cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-				# print ("naam: " + str(data['name']) )
-#                     		playAudio(str(data['visitortype']))
-			url = 'http://www.python.org/'
+			
+# 			print data
+# 			print ("aantal punten: " + str(data['credits']))
+# 			print ("huidige status: ")
+# 			cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+# 				# print ("naam: " + str(data['name']) )
+# #                     		playAudio(str(data['visitortype']))
+			if post:
+				logBrowser(visitorid)
+				break
 			waitUrl='https://onboarding.datakamp.be/read-id'
-			webbrowser.open_new(url)
-			while True:
-				driver = webdriver.Firefox()
-				print (driver.current_url)
-				#if driver.current_url==waitUrl
+			
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
 
 		return card.uid
-
+def logBrowser(visitorid):
+    	data = { "visitor_read_id_id": visitorid}
+        endpoint = "https://onboarding.datakamp.be/read-id"
+        print "Now transmitting"
+        browser = RoboBrowser(history=True)
+	browser.open('https://onboarding.datakamp.be/read-id')
+	form = browser.get_forms()[1]
+	# Now you can fill each elements in form as given below
+	print form[0]	
+	
+	
+	
 def listen_remove(card, interval, card_id):
 	""" Listens for a card to be placed on the reader """
 	# Screen.wrapper(datascreen)
