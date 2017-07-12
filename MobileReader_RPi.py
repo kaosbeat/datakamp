@@ -75,7 +75,7 @@ def listen(card, interval):
 		    print readerid
 		    if (readerid=="Ingang"):
 			#post = logAction(readerid, card.uid, "mobilescan")
-			post = logIngang(readerid, card.uid, "mobilescan")
+			post = logAction(readerid, card.uid, "A00")
 			screensaverstate = 0
 			if post:
 			    data = getVistorActions(card.uid)
@@ -93,24 +93,19 @@ def listen(card, interval):
 			break
 		    #KASSA geluid (en licht?) afspelen bij succes via POST
 		    if (readerid=="Kassa"):
-			post = logIngang(readerid, card.uid, "ADK")
+			post = logAction(card.uid)
 			screensaverstate = 0
 			if post:
+                data = getVistorActions(card.uid)
 			    playAudio(str(data['visitortype']), readerid)
 			    break
 			break
 		    #BAR geluid en licht tot GPIO input gegeven via POST
 		    if (readerid=="Bar"):
-			#post = logAction(readerid, card.uid, "mobilescan")
-			data = logBar(readerid, card.uid, "Bar")
-	#                print data
-	#                print ("aantal punten: " + str(data['credits']))
-	#                print ("huidige status: ")
-	#                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-	#                print ("naam: " + str(data['name']) )
+			data = getVistorActions(card.uid)
 			print(str(data['visitortype']))
-#            		if(str(data['visitortype'])=="Premium VIP"):
-                    	if(str(data['visitortype'])=="Basic"):
+            		if(str(data['visitortype'])=="Premium VIP"):
+#                    	if(str(data['visitortype'])=="Basic"):
 
 			    ####################
 			    print "premiumVipHell"
@@ -124,7 +119,7 @@ def listen(card, interval):
 		    break
 
 		    if (readerid=="Stempaal"):
-			data = logStem (readerid, card.uid, "AA")
+			     data = logAction (readerid, card.uid, "AA")
 	#                print data
 	#                print ("aantal punten: " + str(data['credits']))
 	#                print ("huidige status: ")
@@ -133,40 +128,63 @@ def listen(card, interval):
 	#                break
 			break
 		    if (readerid=="Playfield"):
-		    ##############################################################
-			post = logPlay(readerid, card.uid, "unique ID")
-		    ##############################################################
-			screensaverstate = 0
-			if post:
-			    data = getVistorActions(card.uid)
-			    #print data
-			    #print ("aantal punten: " + str(data['credits']))
-			    #print ("huidige status: ")
-			    #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-			    # print ("naam: " + str(data['name']) )
-			    playAudio(str(data['visitortype']), readerid)
-			    break
+                ##############################################################
+                post = logAction(readerid, card.uid, "unique ID")
+                ##############################################################
+                screensaverstate = 0
+                if post:
+                    data = getVistorActions(card.uid)
+                    #print data
+                    #print ("aantal punten: " + str(data['credits']))
+                    #print ("huidige status: ")
+                    #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+                    # print ("naam: " + str(data['name']) )
+                    playAudio(str(data['visitortype']), readerid)
+                    break
 			break
 		    if (readerid=="Gili"):
-			#post = logAction(readerid, card.uid, "mobilescan")
-			post = logGili(readerid, card.uid, "Gili")
-			screensaverstate = 0
-			if post:
-			    data = getVistorActions(card.uid)
-	#                    print data
-	#                    print ("aantal punten: " + str(data['credits']))
-	#                    print ("huidige status: ")
-	#                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-	#                    print ("naam: " + str(data['name']) )
-			    playAudio(str(data['visitortype']), readerid)
-			    break
+                #post = logAction(readerid, card.uid, "mobilescan")
+                post = logAction(readerid, card.uid, "Gili")
+                screensaverstate = 0
+                if post:
+                    data = getVistorActions(card.uid)
+        #                    print data
+        #                    print ("aantal punten: " + str(data['credits']))
+        #                    print ("huidige status: ")
+        #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+        #                    print ("naam: " + str(data['name']) )
+                    playAudio(str(data['visitortype']), readerid)
+                    break
 			break
 		    if (readerid=="WC"):
-
+                post = logAction(readerid, card.uid, "AWC")
+                screensaverstate = 0
+                if post:
+                    data = getVistorActions(card.uid)
+        #                    print data
+        #                    print ("aantal punten: " + str(data['credits']))
+        #                    print ("huidige status: ")
+        #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+        #                    print ("naam: " + str(data['name']) )
+                    playAudio(str(data['visitortype']), readerid)
+                    break
 			break
 		    if (readerid=="Lichtpaal"):
+                data = getVistorActions(card.uid)
+                # INSERT DMX CODE HERE KASPER
 			break
 		    if (readerid=="Uitgang"):
+                post = logAction(readerid, card.uid, "A99")
+                screensaverstate = 0
+                if post:
+                    data = getVistorActions(card.uid)
+        #                    print data
+        #                    print ("aantal punten: " + str(data['credits']))
+        #                    print ("huidige status: ")
+        #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+        #                    print ("naam: " + str(data['name']) )
+                    playAudio(str(data['visitortype']), readerid)
+                    break
 			break
 
         #print 'Waiting: Card Placement'
