@@ -45,6 +45,10 @@ pip install pycrypto
 cp libccid_Info.plist /etc/libccid_Info.plist
 #cp interfaces /etc/network/interfaces
 #cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+nmcli con add con-name datakamp ifname wlan0 type wifi ssid guesst ip4 10.0.3.1/24 gw4 10.0.0.1
+nmcli con modify datakamp wifi-sec.key-mgmt wpa-psk
+nmcli con modify datakamp wifi-sec.psk VdxLC3B9o6hienL
+
 
 #make sure default audio output = audio jack, NOT HDMI
 amixer cset numid=3 1
