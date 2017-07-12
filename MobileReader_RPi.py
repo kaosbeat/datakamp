@@ -94,7 +94,7 @@ def listen(card, interval):
 			break
 		    #KASSA geluid (en licht?) afspelen bij succes via POST
 		    if (readerid=="Kassa"):
-			post = logAction(card.uid)
+			post = logAction(readerid, card.uid,"ADK")
 			screensaverstate = 0
 			if post:
                 		data = getVistorActions(card.uid)
@@ -116,17 +116,25 @@ def listen(card, interval):
 		    	break
 
 		    if 	readerid=="Stempaal1" :
-			data = logAction (readerid, card.uid, "AA")
-			buzzer(str(data['visitortype']))
+			post = logAction (readerid, card.uid, "AA")
+			if post:
+                		data = getVistorActions(card.uid)
+			    	buzzer(str(data['visitortype']))
+				break
 		    	break
                     if 	readerid=="Stempaal2" :
-			data = logAction (readerid, card.uid, "AB")
-			buzzer(str(data['visitortype']))
+			post = logAction (readerid, card.uid, "AB")
+			if post:
+                		data = getVistorActions(card.uid)
+			    	buzzer(str(data['visitortype']))
+				break
 			break
                     if 	readerid=="Stempaal3" :
-			data = logAction (readerid, card.uid, "AC")
-			print str(data['visitortype'])
-		    	buzzer(str(data['visitortype']))
+			post = logAction (readerid, card.uid, "AC")
+			if post:
+                		data = getVistorActions(card.uid)
+			    	buzzer(str(data['visitortype']))
+				break
 			break
 # 		    if (readerid=="Playfield"):
 #                 ##############################################################
