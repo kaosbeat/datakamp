@@ -21,7 +21,7 @@ from pyfiglet import figlet_format
 from RFIDapi import *
 from screensavers import *
 from pygame import mixer
-from selenium import webdriver
+from selenium import webdriver as driver
 import webbrowser
 from robobrowser import RoboBrowser
 
