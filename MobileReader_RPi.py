@@ -22,7 +22,7 @@ from RFIDapi import *
 from screensavers import *
 from pygame import mixer
 
-import config
+import config_RPi
 
 readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
 state = 0 
@@ -73,7 +73,7 @@ def listen(card, interval):
 		# time.sleep(2)
 		if card.select():
 		    print readerid
-		    if (readerid=="Ingang"):
+		    if "Ingang" in readerid:
 			#post = logAction(readerid, card.uid, "mobilescan")
 			post = logAction(readerid, card.uid, "A00")
 			screensaverstate = 0
@@ -101,7 +101,7 @@ def listen(card, interval):
 			break
 		    break
 		    #BAR geluid en licht tot GPIO input gegeven via POST
-		    if (readerid=="Bar"):
+		    if "Bar" in readerid:
 			data = getVistorActions(card.uid)
 			print(str(data['visitortype']))
             		if(str(data['visitortype'])=="Premium VIP"):
