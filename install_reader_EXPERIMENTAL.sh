@@ -7,7 +7,6 @@
 echo 'export LC_ALL=en_US.UTF-8' >> /home/chip/.bashrc
 echo 'export LANG=en_US.UTF-8' >> /home/chip/.bashrc
 echo 'python datakamp/MobileReader.py &' >> /home/chip/.bashrc
-echo 'amixer cset numid=3 1' >> /home/chip/.bashrc
 
 
 apt-get install swig -y

@@ -115,9 +115,14 @@ def listen(card, interval):
 			    break
 		    	break
 
-		    if 	readerid=="Stempaal1" or readerid=="Stempaal2" or readerid=="Stempaal3" \
-			or readerid=="Stempaal4" or readerid=="Stempaal5" or readerid =="Stempaal6":
+		    if 	readerid=="Stempaal1" :
 			data = logAction (readerid, card.uid, "AA")
+		    	break
+                if 	readerid=="Stempaal2" :
+			data = logAction (readerid, card.uid, "AB")
+		    	break
+                if 	readerid=="Stempaal3" :
+			data = logAction (readerid, card.uid, "AC")
 		    	break
 		    if (readerid=="Playfield"):
                 ##############################################################
