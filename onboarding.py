@@ -83,7 +83,7 @@ def logBrowser(visitorid):
 # # 	test= browser.find_all()
 # # 	print test
 # 	browser.submit_form
-	element = driver.find_element_by_xpath("//*[@id=\"visitor_read_id_id\"]")
+	element = driver.find_element_by_id("visitor_read_id_id")
 	all_forms = element.find_elements_by_tag_name("form")
 	for form in all_forms:
     		print form
