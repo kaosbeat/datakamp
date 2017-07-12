@@ -2,7 +2,6 @@
 test
 ## todo
 1. make sure no tools go to sleep
-2. change install script so libccid file gets overwritten
 3. every device should have WiFi connection, check as soon as possible what credentials are
 4. alter each device its config file (especially RPis) so that we can play sounds based on location from one big folder
 

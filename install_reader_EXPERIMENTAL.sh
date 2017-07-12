@@ -45,7 +45,8 @@ pip install pycrypto
 cp libccid_Info.plist /etc/libccid_Info.plist
 
 #https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Using_the_NetworkManager_Command_Line_Tool_nmcli.html
-nmcli con add con-name datakamp ifname wlan0 type wifi ssid guesst ip4 10.0.3.1/24 gw4 10.0.0.1
+nmcli con add con-name datakamp ifname wlan0 type wifi ssid guesst 
+#ip4 10.0.3.1/24 gw4 10.0.0.1
 nmcli con modify datakamp wifi-sec.key-mgmt wpa-psk
 nmcli con modify datakamp wifi-sec.psk VdxLC3B9o6hienL
 
