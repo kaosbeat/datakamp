@@ -76,7 +76,7 @@ def logBrowser(visitorid):
         endpoint = "https://onboarding.datakamp.be/read-id"
         print "Now transmitting"
         browser = RoboBrowser(history=True)
-	browser.open('https://onboarding.datakamp.be/read-id')
+	browser.open('https://cirq:calmD0wn1337!@onboarding.datakamp.be/read-id')
 	form = browser.get_forms()
 	# Now you can fill each elements in form as given below
 	print form
