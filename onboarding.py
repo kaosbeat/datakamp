@@ -13,6 +13,7 @@ import time
 import json
 import rfidiot
 import CHIP_IO.GPIO as GPIO
+import webbrowser
 from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint 
@@ -20,6 +21,8 @@ from pyfiglet import figlet_format
 from RFIDapi import *
 from screensavers import *
 from pygame import mixer
+from selenium import webdriver
+
 
 import config
 
@@ -48,18 +51,20 @@ def listen(card, interval):
 		# print("now is the time to exit the program by CTRL-C")
 		# time.sleep(2)
 		if card.select():
-			#post = logAction(readerid, card.uid, "mobilescan")
-            		post = logAction(readerid, card.uid, "AWC")
-
-			screensaverstate = 0
-			if post:
-				data = getVistorActions(card.uid)
-				print data
-				print ("aantal punten: " + str(data['credits']))
-				print ("huidige status: ")
-				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+			post= logOnboarding(readerid,  card.uid)
+			print data
+			print ("aantal punten: " + str(data['credits']))
+			print ("huidige status: ")
+			cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 				# print ("naam: " + str(data['name']) )
-                    		playAudio(str(data['visitortype']))
+#                     		playAudio(str(data['visitortype']))
+			url = 'http://www.python.org/'
+			waitUrl='https://onboarding.datakamp.be/read-id'
+			webbrowser.open_new(url)
+			while True:
+				driver = webdriver.Firefox()
+				print (driver.current_url))
+				if driver.current_url==waitUrl
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
