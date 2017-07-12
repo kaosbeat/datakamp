@@ -27,6 +27,26 @@ def logAction(readerid, visitorid, actionid):
 		print("status_code" + str(response.status_code))
 		return False
 	# return response.content
+    
+def logOnboarding(readerid, visitorid):
+
+	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": actionid}
+	print data
+
+	endpoint = "https://onboarding.datakamp.be/read-id"
+	print("now posting")
+	response = requests.post(endpoint, auth=('cirq', 'calmD0wn1337!'), json=data)
+	if (response.status_code == 201):
+		print("succesfully logged action")
+		print("status_code" + str(response.status_code))
+		# return (random.randint(3))
+		# returndata = { "totalscans": random.randint(1,68), "currentplan": "VIP", "name" : "Pierke", "lastname": "Van Gent" }
+		return response.status_code
+	else:
+		print("something went wrong")
+		print("status_code" + str(response.status_code))
+		return False
+	# return response.content
 
 #def logIngang(readerid, visitorid, actionid):
 #
