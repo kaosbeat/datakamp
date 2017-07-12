@@ -22,7 +22,7 @@ from RFIDapi import *
 from screensavers import *
 from pygame import mixer
 
-import config_RPi
+import config_RPi as config
 
 readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
 state = 0 
