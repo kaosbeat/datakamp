@@ -158,7 +158,7 @@ def listen(card, interval):
 		    	break
 
         #print 'Waiting: Card Placement'
-		time.sleep(interval)
+		#time.sleep(interval)
 		return card.uid
 
 def listen_remove(card, interval, card_id):
