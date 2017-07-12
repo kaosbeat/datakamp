@@ -73,7 +73,8 @@ def listen(card, interval):
 		# time.sleep(2)
 		if card.select():
 		    print readerid
-		    if "Ingang" in readerid:
+#		    if "Ingang" in readerid:
+            if(readerid=="Ingang")
 			#post = logAction(readerid, card.uid, "mobilescan")
 			post = logAction(readerid, card.uid, "A00")
 			screensaverstate = 0
