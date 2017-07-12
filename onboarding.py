@@ -63,7 +63,7 @@ def listen(card, interval):
 			webbrowser.open_new(url)
 			while True:
 				driver = webdriver.Firefox()
-				print (driver.current_url))
+				print (driver.current_url)
 				if driver.current_url==waitUrl
 			break
 		#print 'Waiting: Card Placement'
