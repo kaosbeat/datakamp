@@ -21,7 +21,7 @@ from pyfiglet import figlet_format
 from RFIDapi import *
 from screensavers import *
 from pygame import mixer
-from selenium import webdriver as driver
+from selenium import webdriver
 import webbrowser
 from robobrowser import RoboBrowser
 
@@ -34,6 +34,9 @@ screensaverstate = 0
 
 readerid = config.settings['readerID']
 mixer.init()
+driver = webdriver.Firefox()
+
+
 # Card reader Functions
 def open_reader():
 	""" Attempts to open the card reader """
