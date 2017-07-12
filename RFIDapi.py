@@ -12,9 +12,10 @@ def logAction(readerid, visitorid, actionid):
 
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": actionid}
 	print data
-	endpoint = "http://35.157.49.30:8080/api/log"
+
+	endpoint = "https://cirqatron.datakamp.be:8080/api/log"
 	print("now posting")
-	response = requests.post(endpoint, json=data)
+	response = requests.post(endpoint, auth=('chips', 'iM8ShaiToon5apha'), json=data)
 	if (response.status_code == 201):
 		print("succesfully logged action")
 		print("status_code" + str(response.status_code))
