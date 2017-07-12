@@ -62,7 +62,7 @@ def listen(card, interval):
 # 				# print ("naam: " + str(data['name']) )
 # #                     		playAudio(str(data['visitortype']))
 			if post:
-				logBrowser(visitorid)
+				logBrowser(card.uid)
 				break
 			waitUrl='https://onboarding.datakamp.be/read-id'
 			
