@@ -47,7 +47,7 @@ def logAction(readerid, visitorid, actionid):
 #	# return response.content
 
 def getVistorActions(visitorid):
-	visitorid = remapID(visitorid)
+	#visitorid = remapID(visitorid)
 	endpoint = "http://35.157.49.30:8080/api/checkvisitor/" + str(visitorid)
 	# endpoint ="http://35.157.49.30:8080/api/checkvisitor/12c86ca87939"
 	print("now getting " + endpoint)
@@ -81,9 +81,6 @@ def getVistorActions(visitorid):
 		return False
 	# return response.content
 def logBar(readerid, visitorid, actionid):
-
-	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "A00"}
-	print data
 	endpoint = "http://35.157.49.30:8080/api/checkvisitor/" + str(visitorid)
 	print("now getting" + endpoint)
 	response = requests.get(endpoint)

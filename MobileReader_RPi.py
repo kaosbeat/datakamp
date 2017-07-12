@@ -79,7 +79,7 @@ def listen(card, interval):
 			post = logAction(readerid, card.uid, "A00")
 			screensaverstate = 0
 			if post:
-			    data = getVistorActions(card.uid)
+                data = getVistorActions(card.uid)
 			    #print data
 			    #print ("aantal punten: " + str(data['credits']))
 			    #print ("huidige status: ")
@@ -103,7 +103,7 @@ def listen(card, interval):
 		    	break
 		    #BAR geluid en licht tot GPIO input gegeven via POST
 #		    if "Bar" in readerid:
-            	    if (readerid=="Bar"):
+            	    if (readerid=="Bar1" or readerid=="Bar2"):
 			print "in Bar"
 			data = getVistorActions(card.uid)
 			print(str(data['visitortype']))
