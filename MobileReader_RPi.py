@@ -118,10 +118,10 @@ def listen(card, interval):
 		    if 	readerid=="Stempaal1" :
 			data = logAction (readerid, card.uid, "AA")
 		    	break
-                if 	readerid=="Stempaal2" :
+                    if 	readerid=="Stempaal2" :
 			data = logAction (readerid, card.uid, "AB")
 		    	break
-                if 	readerid=="Stempaal3" :
+                    if 	readerid=="Stempaal3" :
 			data = logAction (readerid, card.uid, "AC")
 		    	break
 		    if (readerid=="Playfield"):
