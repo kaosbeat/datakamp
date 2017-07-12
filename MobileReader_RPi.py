@@ -74,7 +74,7 @@ def listen(card, interval):
 		if card.select():
 		    print readerid
 #		    if "Ingang" in readerid:
-                    if(readerid=="Ingang"):
+                    if readerid=="Ingang1" or readerid=="Ingang2":
 			#post = logAction(readerid, card.uid, "mobilescan")
 			post = logAction(readerid, card.uid, "A00")
 			screensaverstate = 0
@@ -89,7 +89,7 @@ def listen(card, interval):
 			    break
 			break
 		    # TBD    
-		    if (readerid=="Premium"):
+		    if readerid=="Premium1" or readerid=="Premium2" or readerid=="Premium3":
 			#tbd
 			break
 		    #KASSA geluid (en licht?) afspelen bij succes via POST
@@ -115,7 +115,8 @@ def listen(card, interval):
 			    break
 		    	break
 
-		    if (readerid=="Stempaal"):
+		    if 	readerid=="Stempaal1" or readerid=="Stempaal2" or readerid=="Stempaal3" \
+			or readerid=="Stempaal4" or readerid=="Stempaal5" or readerid =="Stempaal6":
 			data = logAction (readerid, card.uid, "AA")
 		    	break
 		    if (readerid=="Playfield"):
