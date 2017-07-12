@@ -80,6 +80,9 @@ def logBrowser(visitorid):
 	form = browser.get_forms()
 	# Now you can fill each elements in form as given below
 	print form
+	test= browser.find_all()
+	print test
+	
 	
 	
 	
