@@ -13,7 +13,7 @@ def logAction(readerid, visitorid, actionid):
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": actionid}
 	print data
 
-	endpoint = "https://cirqatron.datakamp.be:8080/api/log"
+	endpoint = "https://cirqatron.datakamp.be/api/log"
 	print("now posting")
 	response = requests.post(endpoint, auth=('chips', 'iM8ShaiToon5apha'), json=data)
 	if (response.status_code == 201):
@@ -49,7 +49,7 @@ def logAction(readerid, visitorid, actionid):
 
 def getVistorActions(visitorid):
 	#visitorid = remapID(visitorid)
-	endpoint = "http://35.157.49.30:8080/api/checkvisitor/" + str(visitorid)
+	endpoint = "https://cirqatron.datakamp.be/api/checkvisitor/" + str(visitorid)
 	# endpoint ="http://35.157.49.30:8080/api/checkvisitor/12c86ca87939"
 	print("now getting " + endpoint)
 	response = requests.get(endpoint)
@@ -67,7 +67,7 @@ def getVistorActions(visitorid):
 #def logKassa(readerid, visitorid, actionid):
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "ADK"}
 	print data
-	endpoint = "http://35.157.49.30:8080/api/log"
+	endpoint = "https://cirqatron.datakamp.be/api/log"
 	print("now posting")
 	response = requests.post(endpoint, json=data)
 	if (response.status_code == 201):
@@ -82,7 +82,7 @@ def getVistorActions(visitorid):
 		return False
 	# return response.content
 def logBar(readerid, visitorid, actionid):
-	endpoint = "http://35.157.49.30:8080/api/checkvisitor/" + str(visitorid)
+	endpoint = "https://cirqatron.datakamp.be/api/checkvisitor/" + str(visitorid)
 	print("now getting" + endpoint)
 	response = requests.get(endpoint)
 	if (response.status_code == 200):
@@ -100,7 +100,7 @@ def logBar(readerid, visitorid, actionid):
 #def logStem(readerid, visitorid, actionid):
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "AA"}
 	print data
-	endpoint = "http://35.157.49.30:8080/api/log"
+	endpoint = "https://cirqatron.datakamp.be/api/log"
 	print("now posting")
 	response = requests.post(endpoint, json=data)
 	if (response.status_code == 201):
@@ -118,7 +118,7 @@ def logBar(readerid, visitorid, actionid):
 #def logPlay(readerid, visitorid, actionid):
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "play"}
 	print data
-	endpoint = "http://35.157.49.30:8080/api/log"
+	endpoint = "https://cirqatron.datakamp.be/api/log"
 	print("now posting")
 	response = requests.post(endpoint, json=data)
 	if (response.status_code == 201):
