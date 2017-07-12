@@ -12,9 +12,10 @@ def logAction(readerid, visitorid, actionid):
 
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": actionid}
 	print data
-	endpoint = "http://35.157.49.30:8080/api/log"
+
+	endpoint = "https://cirqatron.datakamp.be:8080/api/log"
 	print("now posting")
-	response = requests.post(endpoint, json=data)
+	response = requests.post(endpoint, auth=('chips', 'iM8ShaiToon5apha'), json=data)
 	if (response.status_code == 201):
 		print("succesfully logged action")
 		print("status_code" + str(response.status_code))
@@ -27,27 +28,27 @@ def logAction(readerid, visitorid, actionid):
 		return False
 	# return response.content
 
-def logIngang(readerid, visitorid, actionid):
-
-	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "A00"}
-	print data
-	endpoint = "http://35.157.49.30:8080/api/log"
-	print("now posting Ingang")
-	response = requests.post(endpoint, json=data)
-	if (response.status_code == 201):
-		print("succesfully logged action")
-		print("status_code" + str(response.status_code))
-		# return (random.randint(3))
-		# returndata = { "totalscans": random.randint(1,68), "currentplan": "VIP", "name" : "Pierke", "lastname": "Van Gent" }
-		return response.status_code
-	else:
-		print("something went wrong")
-		print("status_code" + str(response.status_code))
-		return False
-	# return response.content
+#def logIngang(readerid, visitorid, actionid):
+#
+#	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "A00"}
+#	print data
+#	endpoint = "http://35.157.49.30:8080/api/log"
+#	print("now posting Ingang")
+#	response = requests.post(endpoint, json=data)
+#	if (response.status_code == 201):
+#		print("succesfully logged action")
+#		print("status_code" + str(response.status_code))
+#		# return (random.randint(3))
+#		# returndata = { "totalscans": random.randint(1,68), "currentplan": "VIP", "name" : "Pierke", "lastname": "Van Gent" }
+#		return response.status_code
+#	else:
+#		print("something went wrong")
+#		print("status_code" + str(response.status_code))
+#		return False
+#	# return response.content
 
 def getVistorActions(visitorid):
-	visitorid = remapID(visitorid)
+	#visitorid = remapID(visitorid)
 	endpoint = "http://35.157.49.30:8080/api/checkvisitor/" + str(visitorid)
 	# endpoint ="http://35.157.49.30:8080/api/checkvisitor/12c86ca87939"
 	print("now getting " + endpoint)
@@ -63,7 +64,7 @@ def getVistorActions(visitorid):
 		print("status_code" + str(response.status_code))
 		return False
 	# return response.content
-def logKassa(readerid, visitorid, actionid):
+#def logKassa(readerid, visitorid, actionid):
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "ADK"}
 	print data
 	endpoint = "http://35.157.49.30:8080/api/log"
@@ -81,9 +82,6 @@ def logKassa(readerid, visitorid, actionid):
 		return False
 	# return response.content
 def logBar(readerid, visitorid, actionid):
-
-	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "A00"}
-	print data
 	endpoint = "http://35.157.49.30:8080/api/checkvisitor/" + str(visitorid)
 	print("now getting" + endpoint)
 	response = requests.get(endpoint)
@@ -99,7 +97,7 @@ def logBar(readerid, visitorid, actionid):
 		print("status_code" + str(response.status_code))
 		return False
 	# return response.content
-def logStem(readerid, visitorid, actionid):
+#def logStem(readerid, visitorid, actionid):
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "AA"}
 	print data
 	endpoint = "http://35.157.49.30:8080/api/log"
@@ -117,7 +115,7 @@ def logStem(readerid, visitorid, actionid):
 		return False
 	# return response.content
     #Playfield-kot ==> unieke action id??
-def logPlay(readerid, visitorid, actionid):
+#def logPlay(readerid, visitorid, actionid):
 	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": "play"}
 	print data
 	endpoint = "http://35.157.49.30:8080/api/log"
