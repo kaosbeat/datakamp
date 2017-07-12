@@ -2,6 +2,7 @@ import requests
 import json
 import random
 
+
 def remapID(ID):
 	if (ID == "794676E4"):
 		return "12c86ca87939"
@@ -36,7 +37,7 @@ def logOnboarding(readerid, visitorid):
 	endpoint = "https://onboarding.datakamp.be/read-id"
 	print("now posting")
 	response = requests.post(endpoint, auth=('cirq', 'calmD0wn1337!'), json=data)
-	if (response.status_code == 201):
+	if (response.status_code == 200):
 		print("succesfully logged action")
 		print("status_code" + str(response.status_code))
 		# return (random.randint(3))
@@ -47,6 +48,8 @@ def logOnboarding(readerid, visitorid):
 		print("status_code" + str(response.status_code))
 		return False
 	# return response.content
+
+        
 
 #def logIngang(readerid, visitorid, actionid):
 #
