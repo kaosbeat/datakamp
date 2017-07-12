@@ -125,6 +125,7 @@ def listen(card, interval):
 			break
                     if 	readerid=="Stempaal3" :
 			data = logAction (readerid, card.uid, "AC")
+			print str(data['visitortype'])
 		    	buzzer(str(data['visitortype']))
 			break
 # 		    if (readerid=="Playfield"):
