@@ -79,7 +79,7 @@ def listen(card, interval):
 			post = logAction(readerid, card.uid, "A00")
 			screensaverstate = 0
 			if post:
-                data = getVistorActions(card.uid)
+                	    data = getVistorActions(card.uid)
 			    #print data
 			    #print ("aantal punten: " + str(data['credits']))
 			    #print ("huidige status: ")
@@ -108,27 +108,15 @@ def listen(card, interval):
 			data = getVistorActions(card.uid)
 			print(str(data['visitortype']))
             		if(str(data['visitortype'])=="Premium VIP"):
-#                    	if(str(data['visitortype'])=="Basic"):
-
-			    ####################
 			    print "premiumVipHell"
 			    global barSignal
 			    barSignal=1 
 			    premiumVipHell(data)    
-			    
-			    
-			    ####################
 			    break
 		    	break
 
 		    if (readerid=="Stempaal"):
 			data = logAction (readerid, card.uid, "AA")
-	#                print data
-	#                print ("aantal punten: " + str(data['credits']))
-	#                print ("huidige status: ")
-	#                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-	#                print ("naam: " + str(data['name']) )
-	#                break
 		    	break
 		    if (readerid=="Playfield"):
                 ##############################################################
@@ -137,25 +125,14 @@ def listen(card, interval):
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-                    #print data
-                    #print ("aantal punten: " + str(data['credits']))
-                    #print ("huidige status: ")
-                    #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-                    # print ("naam: " + str(data['name']) )
                     		playAudio(str(data['visitortype']), readerid)
                     		break
 		    	break
 		    if (readerid=="Gili"):
-                #post = logAction(readerid, card.uid, "mobilescan")
                 	post = logAction(readerid, card.uid, "Gili")
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-        #                    print data
-        #                    print ("aantal punten: " + str(data['credits']))
-        #                    print ("huidige status: ")
-        #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-        #                    print ("naam: " + str(data['name']) )
                     		playAudio(str(data['visitortype']), readerid)
                     		break
 		    	break
@@ -164,11 +141,6 @@ def listen(card, interval):
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-        #                    print data
-        #                    print ("aantal punten: " + str(data['credits']))
-        #                    print ("huidige status: ")
-        #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-        #                    print ("naam: " + str(data['name']) )
                     		playAudio(str(data['visitortype']), readerid)
                     		break
 		    	break
@@ -181,11 +153,6 @@ def listen(card, interval):
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-        #                    print data
-        #                    print ("aantal punten: " + str(data['credits']))
-        #                    print ("huidige status: ")
-        #                    cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-        #                    print ("naam: " + str(data['name']) )
                     		playAudio(str(data['visitortype']), readerid)
                     		break
 		    	break
@@ -196,13 +163,9 @@ def listen(card, interval):
 
 def listen_remove(card, interval, card_id):
 	""" Listens for a card to be placed on the reader """
-	# Screen.wrapper(datascreen)
 	while 1:
 		screensaverstate = 1
 		if not card.select():
-			# data = json.dumps({"card_info":
-			# 	[{"card_id": card_id}, {"timedate": get_time()}, {"action": "Removed"}]})
-			# print(data)
 			break
 		#print "Waiting: Card Removal"
 		time.sleep(interval)
@@ -211,8 +174,6 @@ def listen_remove(card, interval, card_id):
 def playAudio(userType, location):
     print "playaudio"
     if not mixer.music.get_busy():
-#         mixer.init()
-        print "first play"
         dir = os.path.dirname(__file__)
         print location
         if "Basic" in userType: 
@@ -225,8 +186,6 @@ def playAudio(userType, location):
         print filename
         mixer.music.load(filename)
         mixer.music.play()
-#    else:
-#	print("audio already playing")
     return None
        
 
