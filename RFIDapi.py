@@ -30,7 +30,7 @@ def logAction(readerid, visitorid, actionid):
     
 def logOnboarding(readerid, visitorid):
 
-	data = { "reader-id": readerid, "visitor-id": visitorid, "action-id": actionid}
+	data = { "reader-id": readerid, "visitor-id": visitorid}
 	print data
 
 	endpoint = "https://onboarding.datakamp.be/read-id"
