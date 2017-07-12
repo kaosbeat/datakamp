@@ -52,7 +52,7 @@ def getVistorActions(visitorid):
 	endpoint = "https://cirqatron.datakamp.be/api/checkvisitor/" + str(visitorid)
 	# endpoint ="http://35.157.49.30:8080/api/checkvisitor/12c86ca87939"
 	print("now getting " + endpoint)
-	response = requests.get(endpoint)
+	response = requests.get(endpoint, auth=('chips', 'iM8ShaiToon5apha'))
 	if (response.status_code == 200):
 		print("succesfully got data")
 		print("status_code= " + str(response.status_code))
@@ -69,7 +69,7 @@ def getVistorActions(visitorid):
 	print data
 	endpoint = "https://cirqatron.datakamp.be/api/log"
 	print("now posting")
-	response = requests.post(endpoint, json=data)
+	response = requests.post(endpoint, auth=('chips', 'iM8ShaiToon5apha'), json=data)
 	if (response.status_code == 201):
 		print("succesfully logged action")
 		print("status_code" + str(response.status_code))
@@ -84,7 +84,7 @@ def getVistorActions(visitorid):
 def logBar(readerid, visitorid, actionid):
 	endpoint = "https://cirqatron.datakamp.be/api/checkvisitor/" + str(visitorid)
 	print("now getting" + endpoint)
-	response = requests.get(endpoint)
+	response = requests.get(endpoint, auth=('chips', 'iM8ShaiToon5apha'))
 	if (response.status_code == 200):
 		print("succesfully logged action")
 		print("status_code" + str(response.status_code))
@@ -102,7 +102,7 @@ def logBar(readerid, visitorid, actionid):
 	print data
 	endpoint = "https://cirqatron.datakamp.be/api/log"
 	print("now posting")
-	response = requests.post(endpoint, json=data)
+	response = requests.post(endpoint, auth=('chips', 'iM8ShaiToon5apha'), json=data)
 	if (response.status_code == 201):
 		print("succesfully logged action")
 		print("status_code" + str(response.status_code))
@@ -120,7 +120,7 @@ def logBar(readerid, visitorid, actionid):
 	print data
 	endpoint = "https://cirqatron.datakamp.be/api/log"
 	print("now posting")
-	response = requests.post(endpoint, json=data)
+	response = requests.post(endpoint, auth=('chips', 'iM8ShaiToon5apha'), json=data)
 	if (response.status_code == 201):
 		print("succesfully logged action")
 		print("status_code" + str(response.status_code))
