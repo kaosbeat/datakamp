@@ -14,11 +14,11 @@ def logAction(readerid, visitorid, actionid):
 	print data
 
 	endpoint = "https://cirqatron.datakamp.be/api/log"
-#	print("now posting")
+	print("now posting")
 	response = requests.post(endpoint, auth=('chips', 'iM8ShaiToon5apha'), json=data)
 	if (response.status_code == 201):
-#		print("succesfully logged action")
-#		print("status_code" + str(response.status_code))
+		print("succesfully logged action")
+		print("status_code" + str(response.status_code))
 		# return (random.randint(3))
 		# returndata = { "totalscans": random.randint(1,68), "currentplan": "VIP", "name" : "Pierke", "lastname": "Van Gent" }
 		return response.status_code
@@ -50,12 +50,12 @@ def logAction(readerid, visitorid, actionid):
 def getVistorActions(visitorid):
 	#visitorid = remapID(visitorid)
 	endpoint = "https://cirqatron.datakamp.be/api/checkvisitor/" + str(visitorid)
-	# endpoint ="http://35.157.49.30:8080/api/checkvisitor/12c86ca87939"
-#	print("now getting " + endpoint)
+	endpoint ="http://35.157.49.30:8080/api/checkvisitor/12c86ca87939"
+	print("now getting " + endpoint)
 	response = requests.get(endpoint, auth=('chips', 'iM8ShaiToon5apha'))
 	if (response.status_code == 200):
-#		print("succesfully got data")
-#		print("status_code= " + str(response.status_code))
+		print("succesfully got data")
+		print("status_code= " + str(response.status_code))
 		# return (random.randint(3))
 		returndata = response.json()
 		return returndata
