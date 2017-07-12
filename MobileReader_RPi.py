@@ -103,6 +103,7 @@ def listen(card, interval):
 		    #BAR geluid en licht tot GPIO input gegeven via POST
 #		    if "Bar" in readerid:
             	    if (readerid=="Bar"):
+			print "in Bar"
 			data = getVistorActions(card.uid)
 			print(str(data['visitortype']))
             		if(str(data['visitortype'])=="Premium VIP"):
