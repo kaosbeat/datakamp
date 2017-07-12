@@ -77,7 +77,7 @@ def logBrowser(visitorid):
         print "Now transmitting"
         browser = RoboBrowser(history=True)
 	browser.open('https://onboarding.datakamp.be/read-id')
-	form = browser.get_forms()[1]
+	form = browser.get_forms()
 	# Now you can fill each elements in form as given below
 	print form[0]	
 	
