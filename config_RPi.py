@@ -8,11 +8,11 @@ settings = {
 "readerID": socket.gethostname()
 }
 # types of readerID:
-# Ingang
-# Premium
+# Ingang1 Ingang2
+# Premium1 Premium2 Premium3
 # Kassa
-# Bar
-# Stempaal
+# Bar1 Bar2
+# Stempaal1-6
 # Playfield
 # Gili
 # WC
