@@ -21,15 +21,19 @@ from pyfiglet import figlet_format
 from RFIDapi import *
 from screensavers import *
 from pygame import mixer
-
+import array
+from ola.ClientWrapper import ClientWrapper
 import config
 
 readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
 state = 0 
 screensaverstate = 0
 barSignal = 0
-
+dmxwrapper = ClientWrapper()
+dmxuniverse = 1
 readerid = config.settings['readerID']
+print readerid
+
 ################################################################################    
 def premiumVipHell(data):
     while barSignal:
@@ -44,7 +48,49 @@ def stopHell(channel):
     global barSignal
     barSignal =0
 
+#######################  DMX FUNCTIONS ################
+def DmxSent(state):
+	global dmxwrapper
+  	dmxwrapper.Stop()
 
+def SendDmx(dmxuniverse, dmxdata):
+	global dmxwrapper
+	dmxclient = dmxwrapper.Client()
+	dmxclient.SendDmx(dmxuniverse, dmxdata, DmxSent)
+	dmxwrapper.Run()
+
+def RedDMX(time):
+	global dmxuniverse
+	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(1)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(0.7)
+	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(0.5)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(0.3)
+	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(0.1)
+	dmxdata = array.array('B', [7, 0, 0, 128 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(0.1)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+
+def YellowDMX(time):
+	global dmxuniverse
+	dmxdata = array.array('B', [19, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	
+def GreenDMX(time):
+	global dmxuniverse
+	dmxdata = array.array('B', [13, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
 
 #GPIO Config RPi#
 GPIO.setmode(GPIO.BCM)
@@ -171,7 +217,9 @@ def listen(card, interval):
 		    break
 		    if (readerid=="Lichtpaal"):
                 	data = getVistorActions(card.uid)
-                # INSERT DMX CODE HERE KASPER
+                	print data
+	                # INSERT DMX CODE HERE KASPER
+	                RedDMX(100)
 		    break
 		    if (readerid=="Uitgang"):
                 	post = logAction(readerid, card.uid, "A99")
