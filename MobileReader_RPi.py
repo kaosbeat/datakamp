@@ -187,7 +187,7 @@ def listen_remove(card, interval, card_id):
 		if not card.select():
 			break
 		#print "Waiting: Card Removal"
-		time.sleep(interval)
+# 		time.sleep(interval)
         
 #Make a folder structure with 
 def playAudio(userType, location):
