@@ -1,6 +1,7 @@
 import socket
 #this file is the only file that is different on each reader device (mobile or fixed reader)
 print(socket.gethostname())
+print "config ok"
 
 settings = {
 "readerType": "mobile",
