@@ -13,6 +13,7 @@ import time
 import json
 import rfidiot
 import CHIP_IO.GPIO as GPIO
+import webbrowser
 from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint 
@@ -20,6 +21,10 @@ from pyfiglet import figlet_format
 from RFIDapi import *
 from screensavers import *
 from pygame import mixer
+from selenium import webdriver
+import webbrowser
+from robobrowser import RoboBrowser
+
 
 import config
 
@@ -29,6 +34,9 @@ screensaverstate = 0
 
 readerid = config.settings['readerID']
 mixer.init()
+driver = webdriver.Firefox()
+
+
 # Card reader Functions
 def open_reader():
 	""" Attempts to open the card reader """
@@ -45,27 +53,47 @@ def listen(card, interval):
 	global screensaverstate
 	while 1:
 		# Screen.wrapper(datascreen)
-		# print("now is the time to exit the program by CTRL-C")
+		#print("now is the time to exit the program by CTRL-C")
 		# time.sleep(2)
 		if card.select():
-			#post = logAction(readerid, card.uid, "mobilescan")
-            		post = logAction(readerid, card.uid, "AWC")
-
-			screensaverstate = 0
+			post= logOnboarding(readerid,  card.uid)
+			
+# 			print data
+# 			print ("aantal punten: " + str(data['credits']))
+# 			print ("huidige status: ")
+# 			cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+# 				# print ("naam: " + str(data['name']) )
+# #                     		playAudio(str(data['visitortype']))
 			if post:
-				data = getVistorActions(card.uid)
-				print data
-				print ("aantal punten: " + str(data['credits']))
-				print ("huidige status: ")
-				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-				# print ("naam: " + str(data['name']) )
-#                     		playAudio(str(data['visitortype']))
+				logBrowser(card.uid)
+				break
+			waitUrl='https://onboarding.datakamp.be/read-id'
+			
 			break
 		#print 'Waiting: Card Placement'
 		time.sleep(interval)
 
 		return card.uid
-
+def logBrowser(visitorid):
+    	data = { "visitor_read_id_id": visitorid}
+        endpoint = "https://onboarding.datakamp.be/read-id"
+        print "Now transmitting"
+#         browser = RoboBrowser(history=True)
+# 	browser.open('https://cirq:calmD0wn1337!@onboarding.datakamp.be/read-id')
+# 	form = browser.get_forms()
+# 	# Now you can fill each elements in form as given below
+# 	print form
+# # 	test= browser.find_all()
+# # 	print test
+# 	browser.submit_form
+	driver.get("https://cirq:calmD0wn1337!@onboarding.datakamp.be/read-id")
+	element = driver.find_element_by_id("visitor_read_id_id")
+	all_forms = element.find_elements_by_tag_name("form")
+	for form in all_forms:
+    		print form
+	
+	
+	
 def listen_remove(card, interval, card_id):
 	""" Listens for a card to be placed on the reader """
 	# Screen.wrapper(datascreen)

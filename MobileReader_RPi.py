@@ -43,7 +43,7 @@ def stopHell(channel):
     GPIO.output(4,0)    
     global barSignal
     barSignal =0
-
+    
 
 
 #GPIO Config RPi#
@@ -85,7 +85,7 @@ def listen(card, interval):
 			    #print ("huidige status: ")
 			    #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 			    # print ("naam: " + str(data['name']) )
-			    playAudio(str(data['visitortype']), readerid)
+# 			    buzzer(str(data['visitortype']))
 			    break
 			break
 		    # TBD    
@@ -94,11 +94,11 @@ def listen(card, interval):
 			break
 		    #KASSA geluid (en licht?) afspelen bij succes via POST
 		    if (readerid=="Kassa"):
-			post = logAction(card.uid)
+			post = logAction(readerid, card.uid,"ADK")
 			screensaverstate = 0
 			if post:
                 		data = getVistorActions(card.uid)
-			    	playAudio(str(data['visitortype']), readerid)
+# 			    	buzzer(str(data['visitortype']))
 				break
 		    	break
 		    #BAR geluid en licht tot GPIO input gegeven via POST
@@ -111,30 +111,48 @@ def listen(card, interval):
 			    print "premiumVipHell"
 			    global barSignal
 			    barSignal=1 
-			    premiumVipHell(data)    
+# 			    premiumVipHell(data)    
 			    break
 		    	break
 
-		    if 	readerid=="Stempaal1" or readerid=="Stempaal2" or readerid=="Stempaal3" \
-			or readerid=="Stempaal4" or readerid=="Stempaal5" or readerid =="Stempaal6":
-			data = logAction (readerid, card.uid, "AA")
+		    if 	readerid=="Stempaal1" :
+			post = logAction (readerid, card.uid, "AA")
+			if post:
+                		data = getVistorActions(card.uid)
+# 			    	buzzer(str(data['visitortype']))
+				break
 		    	break
-		    if (readerid=="Playfield"):
-                ##############################################################
-                	post = logAction(readerid, card.uid, "unique ID")
-                ##############################################################
-                	screensaverstate = 0
-                	if post:
-                    		data = getVistorActions(card.uid)
-                    		playAudio(str(data['visitortype']), readerid)
-                    		break
-		    	break
+                    if 	readerid=="Stempaal2" :
+			post = logAction (readerid, card.uid, "AB")
+			if post:
+                		data = getVistorActions(card.uid)
+# 			    	buzzer(str(data['visitortype']))
+				break
+			break
+                    if 	readerid=="Stempaal3" :
+			post = logAction (readerid, card.uid, "AC")
+			if post:
+                		data = getVistorActions(card.uid)
+# 			    	buzzer(str(data['visitortype']))
+				break
+			break
+# 		    if (readerid=="Playfield"):
+#                 ##############################################################
+#                 	post = logAction(readerid, card.uid, "unique ID")
+#                 ##############################################################
+#                 	screensaverstate = 0
+#                 	if post:
+#                     		data = getVistorActions(card.uid)
+#                     		playAudio(str(data['visitortype']), readerid)
+#                     		break
+# 		    	break
 		    if (readerid=="Gili"):
-                	post = logAction(readerid, card.uid, "Gili")
+			#Gili is WC uitgang vanaf !
+                	post = logAction(readerid, card.uid, "AWX")
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-                    		playAudio(str(data['visitortype']), readerid)
+#                     		buzzer(str(data['visitortype']))
                     		break
 		    	break
 		    if (readerid=="WC"):
@@ -142,7 +160,7 @@ def listen(card, interval):
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-                    		playAudio(str(data['visitortype']), readerid)
+#                     		playAudio(str(data['visitortype']), readerid)
                     		break
 		    	break
 		    if (readerid=="Lichtpaal"):
@@ -154,7 +172,7 @@ def listen(card, interval):
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-                    		playAudio(str(data['visitortype']), readerid)
+#                     		buzzer(str(data['visitortype']))
                     		break
 		    	break
 
@@ -188,7 +206,19 @@ def playAudio(userType, location):
         mixer.music.load(filename)
         mixer.music.play()
     return None
-       
+def buzzer(userType):
+    if not mixer.music.get_busy():
+        dir = os.path.dirname(__file__)
+        if "Basic" in userType: 
+            filename = os.path.join(dir, 'soundboard/buzzer/basic.mp3')       
+        else: 
+		if "Premium VIP" in userType :
+            		filename = os.path.join(dir, 'soundboard/buzzer/premium_vip.mp3')
+		else: 
+                	filename = os.path.join(dir, 'soundboard/buzzer/vip.mp3')
+        mixer.music.load(filename)
+        mixer.music.play()
+    return None
 
 ##setup stuff
 # Open the card reader
