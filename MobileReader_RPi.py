@@ -185,10 +185,10 @@ def playAudio(userType, location):
         if "Basic" in userType: 
             filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
         else: 
-        if "Premium VIP" in userType :
-                    filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
-        else: 
-                    filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
+            if "Premium VIP" in userType :
+                        filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
+            else: 
+                        filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
         print filename
         mixer.music.load(filename)
         mixer.music.play()
