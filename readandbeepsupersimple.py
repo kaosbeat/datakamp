@@ -17,9 +17,6 @@ init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint 
 from pyfiglet import figlet_format
 from RFIDapi import *
-readerprofile = [0,3]  #action items are only the ones listed in the readerprofile
-state = 0 #program state to define the functions of buttons
-
 
 # Card reader Functions
 def open_reader():
@@ -34,16 +31,14 @@ def open_reader():
 
 def listen(card, interval):
 	""" Listens for a card to be placed on the reader """
-	global state
 	while 1:	
 		if card.select():
-			state = 1
 			data = json.dumps({"card_info":
 				[{"card_id": card.uid}, {"timedate": get_time()}, {"action": "Placed"}]})
 			print(data)
 			break
 		print 'Waiting: Card Placement'
-		time.sleep(interval)
+		# time.sleep(interval)
 	return card.uid
 
 def listen_remove(card, interval, card_id):
@@ -55,7 +50,7 @@ def listen_remove(card, interval, card_id):
 			print(data)
 			break
 		print "Waiting: Card Removal"
-		time.sleep(interval)
+		# time.sleep(interval)
 
 def get_time():
 	""" Returns a string with the time and date """
