@@ -200,10 +200,10 @@ def buzzer(userType):
         if "Basic" in userType: 
             filename = os.path.join(dir, 'soundboard/buzzer/basic.mp3')       
         else: 
-        if "Premium VIP" in userType :
-                    filename = os.path.join(dir, 'soundboard/buzzer/premium_vip.mp3')
-        else: 
-                    filename = os.path.join(dir, 'soundboard/buzzer/vip.mp3')
+            if "Premium VIP" in userType :
+                        filename = os.path.join(dir, 'soundboard/buzzer/premium_vip.mp3')
+            else: 
+                        filename = os.path.join(dir, 'soundboard/buzzer/vip.mp3')
         mixer.music.load(filename)
         mixer.music.play()
     return None
