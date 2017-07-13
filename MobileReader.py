@@ -43,8 +43,7 @@ def listen(card, interval):
 	""" Listens for a card to be placed on the reader """
 	while 1:
 		if card.select():
-			#print "test"
-			post = logAction(readerid, card.uid, "AWC")
+			post = logAction(readerid, card.uid, "ACT")
 			if post:
 				data = getVistorActions(card.uid)
 				print data
