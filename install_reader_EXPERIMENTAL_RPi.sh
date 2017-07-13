@@ -6,6 +6,7 @@
 
 echo 'export LC_ALL=en_US.UTF-8' >> /home/pi/.bashrc
 echo 'export LANG=en_US.UTF-8' >> /home/pi/.bashrc
+echo 'service pcscd restart' >> /home/pi/.bashrc
 echo 'python datakamp/MobileReader_RPi.py &' >> /home/pi/.bashrc
 echo 'amixer cset numid=3 1' >> /home/pi/.bashrc
 # https://choffee.co.uk/posts/2015/01/nfc_reader_acr122_linux/
