@@ -54,6 +54,7 @@ GPIO.setup(4, GPIO.OUT) #output for relay
 GPIO.add_event_detect(21, GPIO.FALLING, callback=stopHell, bouncetime=300)
 mixer.init()
 mixer.pre_init(44100, 16, 2, 4096) #frequency, size, channels, buffersize
+mixer.Sound.set_volume(1.0)
 # Card reader Functions
 def open_reader():
     """ Attempts to open the card reader """
