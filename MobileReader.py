@@ -44,7 +44,7 @@ def listen(card, interval):
 	while 1:
 		if card.select():
 			print "test"
-			post = logAction(readerid, card.uid, "AWC")
+			post = logAction(readerid, card.uid, "ACT")
 			if post:
 				data = getVistorActions(card.uid)
 				print data
@@ -54,7 +54,7 @@ def listen(card, interval):
 				# print ("naam: " + str(data['name']) )
 #                     		playAudio(str(data['visitortype']))
 			break
-		print 'Waiting: Card Placement'
+		# print 'Waiting: Card Placement'
 		time.sleep(interval)
 		# return card.uid
 
@@ -67,7 +67,7 @@ def listen_remove(card, interval, card_id):
 			# 	[{"card_id": card_id}, {"timedate": get_time()}, {"action": "Removed"}]})
 			# print(data)
 			break
-		print "Waiting: Card Removal"
+		# print "Waiting: Card Removal"
 		# time.sleep(interval)
 
 # def playAudio(userType):
