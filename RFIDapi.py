@@ -73,7 +73,7 @@ def logOnboarding(readerid, visitorid):
 def getVistorActions(visitorid):
 	#visitorid = remapID(visitorid)
 	endpoint = "https://cirqatron.datakamp.be/api/checkvisitor/" + str(visitorid)
-	endpoint ="http://35.157.49.30:8080/api/checkvisitor/12c86ca87939"
+# 	endpoint ="http://35.157.49.30:8080/api/checkvisitor/12c86ca87939"
 	print("now getting " + endpoint)
 	response = requests.get(endpoint, auth=('chips', 'iM8ShaiToon5apha'))
 	if (response.status_code == 200):
