@@ -10,7 +10,7 @@ settings = {
 # Bar
 # Stempaal
 # Playfield
-# Gili
+# Gili ==> WCuit
 # WC
 # Lichtpaal
 # Uitgang

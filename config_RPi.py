@@ -11,10 +11,10 @@ settings = {
 # Ingang1 Ingang2
 # Premium1 Premium2 Premium3
 # Kassa
-# Bar1 Bar2
-# Stempaal1-6
+# Bar1 Bar2 ==> Kassa2
+# Stempaal1 Stempaal2 Stempaal3
 # Playfield
-# Gili
+# Gili ==> WCuit
 # WC
 # Lichtpaal
 # Uitgang
