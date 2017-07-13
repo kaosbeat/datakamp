@@ -21,7 +21,7 @@ import RPi.GPIO as GPIO
 # from pyfiglet import figlet_format
 from RFIDapi import *
 # from screensavers import *
-# from pygame import mixer
+from pygame import mixer
 
 import config_RPi as config
 
@@ -52,8 +52,9 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #input for button, connected to 3.3V so pull down resistor
 GPIO.setup(4, GPIO.OUT) #output for relay
 GPIO.add_event_detect(21, GPIO.FALLING, callback=stopHell, bouncetime=300)
-# mixer.init()
-# mixer.pre_init(44100, 16, 2, 4096) #frequency, size, channels, buffersize
+mixer.init()
+mixer.pre_init(44100, 16, 2, 4096) #frequency, size, channels, buffersize
+# mixer.Sound.set_volume(1)
 # Card reader Functions
 def open_reader():
     """ Attempts to open the card reader """
@@ -76,7 +77,7 @@ def listen(card, interval):
                 post = logAction(readerid, card.uid, "A00")
                 if post:
                     data = getVistorActions(card.uid)
-    #               buzzer(str(data['visitortype']))
+                    buzzer(str(data['visitortype']))
                     break
                 break
             # TBD    
@@ -89,7 +90,7 @@ def listen(card, interval):
             # screensaverstate = 0
                 if post:
                     data = getVistorActions(card.uid)
-#                   buzzer(str(data['visitortype']))
+                    buzzer(str(data['visitortype']))
                     break
                 break
             #BAR geluid en licht tot GPIO input gegeven via POST
@@ -101,7 +102,7 @@ def listen(card, interval):
                     print "premiumVipHell"
                     global barSignal
                     barSignal=1 
-#                   premiumVipHell(data)    
+                    premiumVipHell(data)    
                     break
                 break
 
@@ -109,21 +110,21 @@ def listen(card, interval):
                 post = logAction (readerid, card.uid, "AA")
                 if post:
                     data = getVistorActions(card.uid)
-#                   buzzer(str(data['visitortype']))
+                    buzzer(str(data['visitortype']))
                     break
                 break
             if  readerid=="Stempaal2" :
                 post = logAction (readerid, card.uid, "AB")
                 if post:
                     data = getVistorActions(card.uid)
-#                   buzzer(str(data['visitortype']))
+                    buzzer(str(data['visitortype']))
                     break
                 break
             if  readerid=="Stempaal3" :
                 post = logAction (readerid, card.uid, "AC")
                 if post:
                     data = getVistorActions(card.uid)
-#                   buzzer(str(data['visitortype']))
+                    buzzer(str(data['visitortype']))
                     break
                 break
 #           if (readerid=="Playfield"):
@@ -140,7 +141,7 @@ def listen(card, interval):
                 post = logAction(readerid, card.uid, "AWX")
                 if post:
                     data = getVistorActions(card.uid)
-#                           buzzer(str(data['visitortype']))
+                    buzzer(str(data['visitortype']))
                     break
                 break
             
@@ -148,7 +149,7 @@ def listen(card, interval):
                 post = logAction(readerid, card.uid, "AWC")
                 if post:
                     data = getVistorActions(card.uid)
-#                   playAudio(str(data['visitortype']), readerid)
+                    playAudio(str(data['visitortype']), readerid)
                     break
                 break
             if (readerid=="Lichtpaal"):
@@ -159,7 +160,7 @@ def listen(card, interval):
                 post = logAction(readerid, card.uid, "A99")
                 if post:
                     data = getVistorActions(card.uid)
-#                           buzzer(str(data['visitortype']))
+                    buzzer(str(data['visitortype']))
                     break
                 break
 
@@ -177,36 +178,36 @@ def listen_remove(card, interval, card_id):
         time.sleep(interval)
         
 # Make a folder structure with 
-# def playAudio(userType, location):
-#     print "playaudio"
-#     if not mixer.music.get_busy():
-#         dir = os.path.dirname(__file__)
-#         print location
-#         if "Basic" in userType: 
-#             filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
-#         else: 
-#         if "Premium VIP" in userType :
-#                     filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
-#         else: 
-#                     filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
-#         print filename
-#         mixer.music.load(filename)
-#         mixer.music.play()
-#     return None
+def playAudio(userType, location):
+    print "playaudio"
+    if not mixer.music.get_busy():
+        dir = os.path.dirname(__file__)
+        print location
+        if "Basic" in userType: 
+            filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
+        else: 
+            if "Premium VIP" in userType :
+                        filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
+            else: 
+                        filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
+        print filename
+        mixer.music.load(filename)
+        mixer.music.play()
+    return None
 
-# def buzzer(userType):
-#     if not mixer.music.get_busy():
-#         dir = os.path.dirname(__file__)
-#         if "Basic" in userType: 
-#             filename = os.path.join(dir, 'soundboard/buzzer/basic.mp3')       
-#         else: 
-#         if "Premium VIP" in userType :
-#                     filename = os.path.join(dir, 'soundboard/buzzer/premium_vip.mp3')
-#         else: 
-#                     filename = os.path.join(dir, 'soundboard/buzzer/vip.mp3')
-#         mixer.music.load(filename)
-#         mixer.music.play()
-#     return None
+def buzzer(userType):
+    if not mixer.music.get_busy():
+        dir = os.path.dirname(__file__)
+        if "Basic" in userType: 
+            filename = os.path.join(dir, 'soundboard/buzzer/basic.mp3')       
+        else: 
+            if "Premium VIP" in userType :
+                        filename = os.path.join(dir, 'soundboard/buzzer/premium_vip.mp3')
+            else: 
+                        filename = os.path.join(dir, 'soundboard/buzzer/vip.mp3')
+        mixer.music.load(filename)
+        mixer.music.play()
+    return None
 
 ##setup stuff
 # Open the card reader
