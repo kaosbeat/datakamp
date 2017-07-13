@@ -97,11 +97,11 @@ def listen(card, interval):
             if (readerid=="Kassa"):
                 post = logAction(readerid, card.uid,"ADK")
             # screensaverstate = 0
-            if post:
-                data = getVistorActions(card.uid)
-#               buzzer(str(data['visitortype']))
+                if post:
+                    data = getVistorActions(card.uid)
+#                   buzzer(str(data['visitortype']))
+                    break
                 break
-            break
             #BAR geluid en licht tot GPIO input gegeven via POST
 #           if "Bar" in readerid:
             if readerid=="Bar1" or readerid=="Bar2":
