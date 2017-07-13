@@ -4,7 +4,7 @@ test
 1. make sure no tools go to sleep
 3. every device should have WiFi connection, check as soon as possible what credentials are
 4. alter each device its config file (especially RPis) so that we can play sounds based on location from one big folder
-
+5. autostartup olad on lichtpaalreader
 
 
 To stop your wifi from go to sleep after idle for awhile, you need to disable its power management.
