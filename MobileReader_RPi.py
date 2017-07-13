@@ -69,12 +69,10 @@ def listen(card, interval):
     """ Listens for a card to be placed on the reader """
     while 1:
 #       print("now is the time to exit the program by CTRL-C")
-        # time.sleep(2)
         if card.select():
             print readerid
 #           if "Ingang" in readerid:
             if readerid=="Ingang1" or readerid=="Ingang2":
-            #post = logAction(readerid, card.uid, "mobilescan")
                 post = logAction(readerid, card.uid, "A00")
                 if post:
                     data = getVistorActions(card.uid)
@@ -95,7 +93,6 @@ def listen(card, interval):
                     break
                 break
             #BAR geluid en licht tot GPIO input gegeven via POST
-#           if "Bar" in readerid:
             if readerid=="Bar1" or readerid=="Bar2":
                 print "in Bar"
                 data = getVistorActions(card.uid)
@@ -138,7 +135,7 @@ def listen(card, interval):
 #                           playAudio(str(data['visitortype']), readerid)
 #                           break
 #               break
-            if (readerid=="Gili"):
+            if (readerid=="WCuit"):
             #Gili is WC uitgang vanaf !
                 post = logAction(readerid, card.uid, "AWX")
                 if post:
