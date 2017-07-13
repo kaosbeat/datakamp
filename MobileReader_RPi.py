@@ -67,9 +67,7 @@ def open_reader():
 
 def listen(card, interval):
     """ Listens for a card to be placed on the reader """
-    # global screensaverstate
     while 1:
-        # Screen.wrapper(datascreen)
 #       print("now is the time to exit the program by CTRL-C")
         # time.sleep(2)
         if card.select():
@@ -78,14 +76,8 @@ def listen(card, interval):
             if readerid=="Ingang1" or readerid=="Ingang2":
             #post = logAction(readerid, card.uid, "mobilescan")
                 post = logAction(readerid, card.uid, "A00")
-            # screensaverstate = 0
                 if post:
                     data = getVistorActions(card.uid)
-                    #print data
-                    #print ("aantal punten: " + str(data['credits']))
-                    #print ("huidige status: ")
-                    #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-                    # print ("naam: " + str(data['name']) )
     #               buzzer(str(data['visitortype']))
                     break
                 break
@@ -141,7 +133,6 @@ def listen(card, interval):
 #                 ##############################################################
 #                   post = logAction(readerid, card.uid, "unique ID")
 #                 ##############################################################
-#                   screensaverstate = 0
 #                   if post:
 #                           data = getVistorActions(card.uid)
 #                           playAudio(str(data['visitortype']), readerid)
@@ -150,7 +141,6 @@ def listen(card, interval):
             if (readerid=="Gili"):
             #Gili is WC uitgang vanaf !
                 post = logAction(readerid, card.uid, "AWX")
-                    # screensaverstate = 0
                 if post:
                     data = getVistorActions(card.uid)
 #                           buzzer(str(data['visitortype']))
@@ -159,10 +149,9 @@ def listen(card, interval):
             
             if (readerid=="WC"):
                 post = logAction(readerid, card.uid, "AWC")
-                # screensaverstate = 0
                 if post:
                     data = getVistorActions(card.uid)
-#                           playAudio(str(data['visitortype']), readerid)
+#                   playAudio(str(data['visitortype']), readerid)
                     break
                 break
             if (readerid=="Lichtpaal"):
@@ -171,7 +160,6 @@ def listen(card, interval):
                 break
             if (readerid=="Uitgang"):
                 post = logAction(readerid, card.uid, "A99")
-                # screensaverstate = 0
                 if post:
                     data = getVistorActions(card.uid)
 #                           buzzer(str(data['visitortype']))
@@ -180,7 +168,7 @@ def listen(card, interval):
 
         #print 'Waiting: Card Placement'
         #time.sleep(interval)
-        return card.uid
+        #return card.uid
 
 def listen_remove(card, interval, card_id):
     """ Listens for a card to be placed on the reader """
