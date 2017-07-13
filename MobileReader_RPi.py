@@ -85,7 +85,7 @@ def listen(card, interval):
             #tbd
                 break
             #KASSA geluid (en licht?) afspelen bij succes via POST
-            if readerid=="Kassa" or readerid=="Kassa2":
+            if readerid=="Kassa1" or readerid=="Kassa2":
                 post = logAction(readerid, card.uid,"ADK")
             # screensaverstate = 0
                 if post:
