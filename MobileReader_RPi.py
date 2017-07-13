@@ -85,7 +85,7 @@ def listen(card, interval):
 			    #print ("huidige status: ")
 			    #cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
 			    # print ("naam: " + str(data['name']) )
-			    buzzer(str(data['visitortype']))
+# 			    buzzer(str(data['visitortype']))
 			    break
 			break
 		    # TBD    
@@ -98,7 +98,7 @@ def listen(card, interval):
 			screensaverstate = 0
 			if post:
                 		data = getVistorActions(card.uid)
-			    	buzzer(str(data['visitortype']))
+# 			    	buzzer(str(data['visitortype']))
 				break
 		    	break
 		    #BAR geluid en licht tot GPIO input gegeven via POST
@@ -111,7 +111,7 @@ def listen(card, interval):
 			    print "premiumVipHell"
 			    global barSignal
 			    barSignal=1 
-			    premiumVipHell(data)    
+# 			    premiumVipHell(data)    
 			    break
 		    	break
 
@@ -119,21 +119,21 @@ def listen(card, interval):
 			post = logAction (readerid, card.uid, "AA")
 			if post:
                 		data = getVistorActions(card.uid)
-			    	buzzer(str(data['visitortype']))
+# 			    	buzzer(str(data['visitortype']))
 				break
 		    	break
                     if 	readerid=="Stempaal2" :
 			post = logAction (readerid, card.uid, "AB")
 			if post:
                 		data = getVistorActions(card.uid)
-			    	buzzer(str(data['visitortype']))
+# 			    	buzzer(str(data['visitortype']))
 				break
 			break
                     if 	readerid=="Stempaal3" :
 			post = logAction (readerid, card.uid, "AC")
 			if post:
                 		data = getVistorActions(card.uid)
-			    	buzzer(str(data['visitortype']))
+# 			    	buzzer(str(data['visitortype']))
 				break
 			break
 # 		    if (readerid=="Playfield"):
@@ -152,7 +152,7 @@ def listen(card, interval):
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-                    		buzzer(str(data['visitortype']))
+#                     		buzzer(str(data['visitortype']))
                     		break
 		    	break
 		    if (readerid=="WC"):
@@ -160,7 +160,7 @@ def listen(card, interval):
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-                    		playAudio(str(data['visitortype']), readerid)
+#                     		playAudio(str(data['visitortype']), readerid)
                     		break
 		    	break
 		    if (readerid=="Lichtpaal"):
@@ -172,7 +172,7 @@ def listen(card, interval):
                 	screensaverstate = 0
                 	if post:
                     		data = getVistorActions(card.uid)
-                    		buzzer(str(data['visitortype']))
+#                     		buzzer(str(data['visitortype']))
                     		break
 		    	break
 
@@ -187,7 +187,7 @@ def listen_remove(card, interval, card_id):
 		if not card.select():
 			break
 		#print "Waiting: Card Removal"
-# 		time.sleep(interval)
+		time.sleep(interval)
         
 #Make a folder structure with 
 def playAudio(userType, location):
