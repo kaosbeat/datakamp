@@ -35,7 +35,7 @@ def SendDmx(dmxuniverse, dmxdata):
 	dmxclient.SendDmx(dmxuniverse, dmxdata, DmxSent)
 	dmxwrapper.Run()
 
-def RedDMX(time):
+def RedDMX():
 	global dmxuniverse
 	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
 	SendDmx(dmxuniverse, dmxdata)
@@ -58,15 +58,20 @@ def RedDMX(time):
 	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
 	SendDmx(dmxuniverse, dmxdata)
 
-def YellowDMX(time):
+def YellowDMX():
 	global dmxuniverse
 	dmxdata = array.array('B', [19, 0, 0, 0 ,0])
 	SendDmx(dmxuniverse, dmxdata)
 	
-def GreenDMX(time):
+def GreenDMX():
 	global dmxuniverse
 	dmxdata = array.array('B', [13, 0, 0, 0 ,0])
 	SendDmx(dmxuniverse, dmxdata)
+
+def p10DMX():
+	global dmxuniverse
+	dmxdata = array.array('B', [13, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)	
 
 # Card reader Functions
 def open_reader():
