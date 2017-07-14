@@ -29,45 +29,45 @@ readerid = config.settings['readerID']
 mixer.init()
 # Card reader Functions
 def open_reader():
-	""" Attempts to open the card reader """
-	try:
-		print "open reader try"
-		card = rfidiot.card
-		return card
-	except:
-		print "Couldn't open reader!"
-		sys.exit()
-		return None
+    """ Attempts to open the card reader """
+    try:
+        print "open reader try"
+        card = rfidiot.card
+        return card
+    except:
+        print "Couldn't open reader!"
+        sys.exit()
+        return None
 
 def listen(card, interval):
-	""" Listens for a card to be placed on the reader """
-	while 1:
-		if card.select():
-			post = logAction(readerid, card.uid, "ACT")
-			if post:
-				data = getVistorActions(card.uid)
-				print data
-				print ("aantal punten: " + str(data['credits']))
-				print ("huidige status: ")
-				cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
-				# print ("naam: " + str(data['name']) )
+    """ Listens for a card to be placed on the reader """
+    while 1:
+        if card.select():
+            post = logAction(readerid, card.uid, "ACT")
+            if post:
+                data = getVistorActions(card.uid)
+                print data
+                print ("aantal punten: " + str(data['credits']))
+                print ("huidige status: ")
+                cprint(figlet_format(data['visitortype'], font='banner'),'yellow', 'on_red', attrs=['bold'])
+                # print ("naam: " + str(data['name']) )
                 playAudio(str(data['visitortype']))
-			break
-		# print 'Waiting: Card Placement'
-		time.sleep(interval)
-		# return card.uid
+            break
+        # print 'Waiting: Card Placement'
+        time.sleep(interval)
+        # return card.uid
 
 def listen_remove(card, interval, card_id):
-	""" Listens for a card to be placed on the reader """
-	# Screen.wrapper(datascreen)
-	while 1:
-		if not card.select():
-			# data = json.dumps({"card_info":
-			# 	[{"card_id": card_id}, {"timedate": get_time()}, {"action": "Removed"}]})
-			# print(data)
-			break
-		# print "Waiting: Card Removal"
-		# time.sleep(interval)
+    """ Listens for a card to be placed on the reader """
+    # Screen.wrapper(datascreen)
+    while 1:
+        if not card.select():
+            # data = json.dumps({"card_info":
+            #   [{"card_id": card_id}, {"timedate": get_time()}, {"action": "Removed"}]})
+            # print(data)
+            break
+        # print "Waiting: Card Removal"
+        # time.sleep(interval)
 
 def playAudio(userType):
     print "playaudio"
@@ -77,15 +77,15 @@ def playAudio(userType):
         if "Basic" in userType: 
             filename = os.path.join(dir, 'soundboard/Mobile/basic.mp3')       
         else: 
-		if "Premium VIP" in userType :
-            		filename = os.path.join(dir, 'soundboard/Mobile/premium_vip.mp3')
-		else: 
-                	filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
+        if "Premium VIP" in userType :
+                    filename = os.path.join(dir, 'soundboard/Mobile/premium_vip.mp3')
+        else: 
+                    filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
         print filename
         mixer.music.load(filename)
         mixer.music.play()
 #    else:
-#	print("audio already playing")
+#   print("audio already playing")
     return None
     
     
@@ -99,10 +99,10 @@ card_info = card.info('cardselect v0.1m')
 
 # Main loop
 while 1:
-	# print "main"
-	time.sleep(0.05)
-	card_id = listen(card, 0.1)
-	listen_remove(card, 0.1, card_id)
+    # print "main"
+    time.sleep(0.05)
+    card_id = listen(card, 0.1)
+    listen_remove(card, 0.1, card_id)
 
 
 #Read RFID
