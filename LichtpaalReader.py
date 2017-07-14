@@ -6,10 +6,7 @@
 # RFID Read
 #
 
-
-
 import os,sys
-import time
 import json
 import time
 import rfidiot
@@ -26,8 +23,8 @@ print readerid
 
 #######################  DMX FUNCTIONS ################
 def DmxSent(state):
-	global dmxwrapper
-  	dmxwrapper.Stop()
+    global dmxwrapper
+    dmxwrapper.Stop()
 
 def SendDmx(dmxuniverse, dmxdata):
 	global dmxwrapper
@@ -110,16 +107,17 @@ def p100DMX():
 
 
 
+
 # Card reader Functions
 def open_reader():
-	""" Attempts to open the card reader """
-	try:
-		card = rfidiot.card
-		return card
-	except:
-		print "Couldn't open reader!"
-		sys.exit()
-		return None
+    """ Attempts to open the card reader """
+    try:
+        card = rfidiot.card
+        return card
+    except:
+        print "Couldn't open reader!"
+        sys.exit()
+        return None
 
 def listen(card, interval):
 	""" Listens for a card to be placed on the reader """
@@ -146,23 +144,20 @@ def listen(card, interval):
         	p100DMX()
         	break
 
-        	   
-        #print 'Waiting: Card Placement'
-		#time.sleep(interval)
-		#return card.uid
+  
 
 def listen_remove(card, interval, card_id):
-	""" Listens for a card to be placed on the reader """
-	# Screen.wrapper(datascreen)
-	while 1:
-		screensaverstate = 1
-		if not card.select():
-			# data = json.dumps({"card_info":
-			# 	[{"card_id": card_id}, {"timedate": get_time()}, {"action": "Removed"}]})
-			# print(data)
-			break
-		#print "Waiting: Card Removal"
-		time.sleep(interval)
+    """ Listens for a card to be placed on the reader """
+    # Screen.wrapper(datascreen)
+    while 1:
+        screensaverstate = 1
+        if not card.select():
+            # data = json.dumps({"card_info":
+            #   [{"card_id": card_id}, {"timedate": get_time()}, {"action": "Removed"}]})
+            # print(data)
+            break
+        #print "Waiting: Card Removal"
+        time.sleep(interval)
     return None
        
 
@@ -176,8 +171,8 @@ card_info = card.info('cardselect v0.1m')
 try:
     while 1:  
         card_id = listen(card, 0.1)
-	listen_remove(card, 0.1, card_id)
+    	listen_remove(card, 0.1, card_id)
 except KeyboardInterrupt:
-	print "keyboard interrupt!"
+    print "keyboard interrupt!"
 
 
