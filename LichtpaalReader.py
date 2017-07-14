@@ -68,10 +68,47 @@ def GreenDMX():
 	dmxdata = array.array('B', [13, 0, 0, 0 ,0])
 	SendDmx(dmxuniverse, dmxdata)
 
-def p10DMX():
+def p20DMX():
 	global dmxuniverse
-	dmxdata = array.array('B', [13, 0, 0, 0 ,0])
+	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(1)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+
+
+
+def p40DMX():
+	global dmxuniverse
+	dmxdata = array.array('B', [32, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(1)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
 	SendDmx(dmxuniverse, dmxdata)	
+def p60DMX():
+	global dmxuniverse
+	dmxdata = array.array('B', [26, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(1)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)	
+def p80DMX():
+	global dmxuniverse
+	dmxdata = array.array('B', [14, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(1)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+def p100DMX():
+	global dmxuniverse
+	dmxdata = array.array('B', [200, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(3)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)	
+
+
+
 
 # Card reader Functions
 def open_reader():
@@ -90,17 +127,29 @@ def listen(card, interval):
 	if card.select():
 	    # print readerid
         data = getVistorActions(card.uid)
-        if (data['visitortype'] == "Premium VIP"):
+        if (data['percentile'] <= 20):
         	# print data
             # INSERT DMX CODE HERE KASPER
-            RedDMX(100)
-        elif (data['visitortype'] == "Premium"):
-        	YellowDMX(100)
-        elif (data['visitortype'] == "Basic"):
-        	GreenDMX(100)   
+            p20DMX()
+            break
+        elif (data['percentile'] <= 40):
+        	p40DMX()
+        	break
+        	
+        elif (data['percentile'] <= 60):
+        	p60DMX()
+        	break
+       	elif (data['percentile'] <= 80):
+        	p60DMX()
+        	break
+        else:
+        	p100DMX()
+        	break
+
+        	   
         #print 'Waiting: Card Placement'
-		time.sleep(interval)
-		return card.uid
+		#time.sleep(interval)
+		#return card.uid
 
 def listen_remove(card, interval, card_id):
 	""" Listens for a card to be placed on the reader """
