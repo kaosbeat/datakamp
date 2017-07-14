@@ -10,8 +10,8 @@ settings = {
 # types of readerID:
 # Ingang1 Ingang2
 # Premium1 Premium2 Premium3
-# Kassa
-# Bar1 Bar2 ==> Kassa2
+# Kassa kassa2
+# Bar1 (Bar2 ==> Kassa2)
 # Stempaal1 Stempaal2 Stempaal3
 # Playfield
 # Gili ==> WCuit
