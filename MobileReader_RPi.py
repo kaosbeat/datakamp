@@ -190,12 +190,12 @@ def playAudioWC(userType, location):
         dir = os.path.dirname(__file__)
         print location
         if "Basic" in userType: 
-            filename = os.path.join(dir, 'soundboard/WC/basic/',str(randint(1,6) ),'.mp3')       
+            filename = os.path.join(dir, 'soundboard/WC/basic/',str(randint(1,6) )+'.mp3')       
         else: 
             if "Premium VIP" in userType :
                         filename = os.path.join(dir, 'soundboard/premium_vip/1.mp3')
             else: 
-                        filename = os.path.join(dir, 'soundboard/vip/',str(randint(1,2)),'.mp3')
+                        filename = os.path.join(dir, 'soundboard/vip/',str(randint(1,2))+'.mp3')
         print filename
         mixer.music.load(filename)
         mixer.music.play()
