@@ -76,8 +76,7 @@ def playAudio(userType):
         dir = os.path.dirname(__file__)
         if "Basic" in userType: 
             filename = os.path.join(dir, 'soundboard/Mobile/basic.mp3')       
-        else: 
-        if "Premium VIP" in userType :
+        elif "Premium VIP" in userType :
                     filename = os.path.join(dir, 'soundboard/Mobile/premium_vip.mp3')
         else: 
                     filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
