@@ -22,6 +22,8 @@ import RPi.GPIO as GPIO
 from RFIDapi import *
 # from screensavers import *
 from pygame import mixer
+from random import randint
+
 
 import config_RPi as config
 
@@ -149,7 +151,7 @@ def listen(card, interval):
                 post = logAction(readerid, card.uid, "AWC")
                 if post:
                     data = getVistorActions(card.uid)
-                    playAudio(str(data['visitortype']), readerid)
+                    playAudioWC(str(data['visitortype']), readerid)
                     break
                 break
             if (readerid=="Lichtpaal"):
@@ -178,6 +180,23 @@ def listen_remove(card, interval, card_id):
         time.sleep(interval)
         
 # Make a folder structure with 
+def playAudioWC(userType, location):
+    print "play WC"
+    if not mixer.music.get_busy():
+        dir = os.path.dirname(__file__)
+        print location
+        if "Basic" in userType: 
+            filename = os.path.join(dir, 'soundboard/WC/basic/',randint(1,6) ,'.mp3')       
+        else: 
+            if "Premium VIP" in userType :
+                        filename = os.path.join(dir, 'soundboard/premium_vip/1.mp3')
+            else: 
+                        filename = os.path.join(dir, 'soundboard/vip/',randint(1,2),'.mp3')
+        print filename
+        mixer.music.load(filename)
+        mixer.music.play()
+    return None
+
 def playAudio(userType, location):
     print "playaudio"
     if not mixer.music.get_busy():
