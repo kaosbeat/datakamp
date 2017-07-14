@@ -202,7 +202,7 @@ def playAudioWC(userType, location):
     return None
 
 def playAudio(userType, location):
-    print "playaudio"
+    print "playaudio" +userType+" "+location
     if not mixer.music.get_busy():
         dir = os.path.dirname(__file__)
         print location
