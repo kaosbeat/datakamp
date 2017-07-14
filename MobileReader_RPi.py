@@ -143,7 +143,7 @@ def listen(card, interval):
                 post = logAction(readerid, card.uid, "AWX")
                 if post:
                     data = getVistorActions(card.uid)
-                    buzzer(str(data['visitortype']))
+                    playAudio(str(data['visitortype']), readerid)
                     break
                 break
             
