@@ -106,6 +106,10 @@ def listen(card, interval):
                     barSignal=1 
                     premiumVipHell(data)    
                     break
+                else:
+                    playAudio(str(data['visitortype']), readerid)
+                    break
+
                 break
 
             if  readerid=="Stempaal1" :
@@ -143,7 +147,7 @@ def listen(card, interval):
                 post = logAction(readerid, card.uid, "AWX")
                 if post:
                     data = getVistorActions(card.uid)
-                    playAudio(str(data['visitortype']), readerid)
+                    playAudio(str(data['visitortype']), readerid)c
                     break
                 break
             
