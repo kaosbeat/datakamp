@@ -62,6 +62,7 @@ pip install playsound
 #echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart
 cp libccid_Info.plist /etc/libccid_Info.plist
 cp rc.local /etc/rc.local
+cp .bashrc ~/.bashrc
 #cp interfaces /etc/network/interfaces
 #cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
