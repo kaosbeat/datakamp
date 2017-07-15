@@ -4,9 +4,9 @@
 #for the mobile readers we start with standard pocketCHIP firmware (4.4)
 #this script should be run with SUDO
 
-echo 'export LC_ALL=en_US.UTF-8' >> /home/chip/rc.local
-echo 'export LANG=en_US.UTF-8' >> /home/chip/rc.local
-echo 'bash /home/chip/datakamp/startup.sh' >> /home/chip/rc.local
+echo 'export LC_ALL=en_US.UTF-8' >> /home/chip/.bashrc
+echo 'export LANG=en_US.UTF-8' >> /home/chip/.bashrc
+echo 'bash /home/chip/datakamp/startup.sh' >> /home/chip/.bashrc
 
 
 apt-get install swig -y
