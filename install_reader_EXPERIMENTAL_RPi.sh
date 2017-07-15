@@ -4,11 +4,11 @@
 #for the mobile readers we start with standard pocketCHIP firmware (4.4)
 #this script should be run with SUDO
 
-echo 'export LC_ALL=en_US.UTF-8' >> /home/pi/.bashrc
-echo 'export LANG=en_US.UTF-8' >> /home/pi/.bashrc
-echo 'service pcscd restart' >> /home/pi/.bashrc
-echo 'python datakamp/MobileReader_RPi.py &' >> /home/pi/.bashrc
-echo 'amixer cset numid=3 1' >> /home/pi/.bashrc
+echo 'export LC_ALL=en_US.UTF-8' >> /home/pi/rc.local
+echo 'export LANG=en_US.UTF-8' >> /home/pi/rc.local
+#echo 'service pcscd restart' >> /home/pi/.bashrc
+echo 'bash /home/pi/datakamp/startup.sh' >> /home/pi/rc.local
+echo 'amixer cset numid=3 1' >> /home/pi/rc.local
 # https://choffee.co.uk/posts/2015/01/nfc_reader_acr122_linux/
 # errors while claiming RFID reader solution: CHECK!!
 #echo 'blacklist pn533' > /etc/modprobe.d/rfid-blacklist.conf
@@ -61,8 +61,8 @@ pip install playsound
 #automated start of script TEST!!
 #echo "@python2.7 ~/Documents/datakamp/MobileReader_RPi.py &" >> /home/pi/.config/lxsession/LXDE-pi/autostart
 cp libccid_Info.plist /etc/libccid_Info.plist
-cp interfaces /etc/network/interfaces
-cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+#cp interfaces /etc/network/interfaces
+#cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 #make sure default audio output = audio jack, NOT HDMI
 amixer cset numid=3 1
