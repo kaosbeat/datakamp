@@ -30,92 +30,92 @@ def DmxSent(state):
     dmxwrapper.Stop()
 
 def SendDmx(dmxuniverse, dmxdata):
-	global dmxwrapper
-	dmxclient = dmxwrapper.Client()
-	dmxclient.SendDmx(dmxuniverse, dmxdata, DmxSent)
-	dmxwrapper.Run()
+    global dmxwrapper
+    dmxclient = dmxwrapper.Client()
+    dmxclient.SendDmx(dmxuniverse, dmxdata, DmxSent)
+    dmxwrapper.Run()
 
 def confirmationDMX():
-	global dmxuniverse
-	print ("trying to confirm!")
-	dmxdata = array.array('B', [61, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(0.5)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
+    global dmxuniverse
+    print ("trying to confirm!")
+    dmxdata = array.array('B', [61, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
 
 
 def RedDMX():
-	global dmxuniverse
-	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(1)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(0.7)
-	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(0.5)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(0.3)
-	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(0.1)
-	dmxdata = array.array('B', [7, 0, 0, 128 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(0.1)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
+    global dmxuniverse
+    dmxdata = array.array('B', [7, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(0.7)
+    dmxdata = array.array('B', [7, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(0.5)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(0.3)
+    dmxdata = array.array('B', [7, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(0.1)
+    dmxdata = array.array('B', [7, 0, 0, 128 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(0.1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
 
 def YellowDMX():
-	global dmxuniverse
-	dmxdata = array.array('B', [19, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	
+    global dmxuniverse
+    dmxdata = array.array('B', [19, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    
 def GreenDMX():
-	global dmxuniverse
-	dmxdata = array.array('B', [13, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
+    global dmxuniverse
+    dmxdata = array.array('B', [13, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
 
-def p20DMX():
-	global dmxuniverse
-	dmxdata = array.array('B', [7, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(1)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
+def p20DMX(vtype):
+    global dmxuniverse
+    dmxdata = array.array('B', [7, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
 
 
 
-def p40DMX():
-	global dmxuniverse
-	dmxdata = array.array('B', [32, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(1)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)	
-def p60DMX():
-	global dmxuniverse
-	dmxdata = array.array('B', [26, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(1)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)	
-def p80DMX():
-	global dmxuniverse
-	dmxdata = array.array('B', [14, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(1)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-def p100DMX():
-	global dmxuniverse
-	dmxdata = array.array('B', [200, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)
-	time.sleep(3)
-	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
-	SendDmx(dmxuniverse, dmxdata)	
+def p40DMX(vtype):
+    global dmxuniverse
+    dmxdata = array.array('B', [32, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)   
+def p60DMX(vtype):
+    global dmxuniverse
+    dmxdata = array.array('B', [26, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)   
+def p80DMX(vtype):
+    global dmxuniverse
+    dmxdata = array.array('B', [14, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+def p100DMX(vtype):
+    global dmxuniverse
+    dmxdata = array.array('B', [200, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(3)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)   
 
 
 
@@ -133,30 +133,30 @@ def open_reader():
         return None
 
 def listen(card, interval):
-	""" Listens for a card to be placed on the reader """
-	while 1:
-	if card.select():
-		confirmationDMX()
-	    # print readerid
-        data = getVistorActions(card.uid)
-        print data
-        if (data['percentile'] <= 20):
-            # INSERT DMX CODE HERE KASPER
-            p20DMX()
-            break
-        elif (data['percentile'] <= 40):
-        	p40DMX()
-        	break
-        	
-        elif (data['percentile'] <= 60):
-        	p60DMX()
-        	break
-       	elif (data['percentile'] <= 80):
-        	p60DMX()
-        	break
-        else:
-        	p100DMX()
-        	break
+    """ Listens for a card to be placed on the reader """
+    while 1:
+        if card.select():
+            confirmationDMX()
+            # print readerid
+            data = getVistorActions(card.uid)
+            print data
+            if (data['percentile'] <= 20):
+                # INSERT DMX CODE HERE KASPER
+                p20DMX(data['visitortype'])
+                break
+            elif (data['percentile'] <= 40):
+                p40DMX(data['visitortype'])
+                break
+                
+            elif (data['percentile'] <= 60):
+                p60DMX(data['visitortype'])
+                break
+            elif (data['percentile'] <= 80):
+                p60DMX(data['visitortype'])
+                break
+            else:
+                p100DMX(data['visitortype'])
+                break
 
   
 
@@ -185,7 +185,7 @@ card_info = card.info('cardselect v0.1m')
 try:
     while 1:  
         card_id = listen(card, 0.1)
-    	listen_remove(card, 0.1, card_id)
+        listen_remove(card, 0.1, card_id)
 except KeyboardInterrupt:
     print "keyboard interrupt!"
 
