@@ -27,6 +27,7 @@ state = 0
 
 readerid = config.settings['readerID']
 mixer.init()
+mixer.pre_init(44100, 16, 2, 4096) #frequency, size, channels, buffersize
 
 def testNetwork():
     
