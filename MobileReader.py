@@ -32,11 +32,11 @@ def testNetwork():
     
     for x in xrange(1,10):
         post = logAction("networktest", "94BF840E", "ACT")
-        print post
-        print time.time()
+        #print post
+        #print time.time()
         data = getVistorActions("94BF840E")
-        print data
-        print time.time()
+        #print data
+        #print time.time()
 
 
 # Card reader Functions
@@ -89,8 +89,8 @@ def playConfirmation():
         mixer.music.play()
 
 def playAudio(userType):
-    print "playaudio"
-    print time.time()
+    #print "playaudio"
+    #print time.time()
     if not mixer.music.get_busy():
         # print "first play"
         dir = os.path.dirname(__file__)
@@ -100,15 +100,15 @@ def playAudio(userType):
                     filename = os.path.join(dir, 'soundboard/Mobile/premium_vip.mp3')
         else: 
                     filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
-        print filename
-        print "loading filename"
+        #print filename
+        #print "loading filename"
         mixer.music.load(filename)
-        print time.time()
-        print "playing file start"
-        print time.time()
+        #print time.time()
+        #print "playing file start"
+        #print time.time()
         mixer.music.play()
-        print "playing file stop"
-        print time.time()
+        #print "playing file stop"
+        #print time.time()
 #    else:
 #   print("audio already playing")
     return None
