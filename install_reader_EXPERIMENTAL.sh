@@ -42,6 +42,7 @@ pip install pycrypto
 
 
 cp libccid_Info.plist /etc/libccid_Info.plist
+#cp rc.local /etc/rc.local
 
 #https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Using_the_NetworkManager_Command_Line_Tool_nmcli.html
 nmcli con add con-name datakamp ifname wlan0 type wifi ssid guesst 
