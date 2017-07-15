@@ -90,28 +90,20 @@ def playConfirmation():
         mixer.music.play()
 
 def playAudio(userType):
-    #print "playaudio"
-    #print time.time()
-    if not mixer.music.get_busy():
-        # print "first play"
-        dir = os.path.dirname(__file__)
-        if "Basic" in userType: 
-            filename = os.path.join(dir, 'soundboard/Mobile/basic.mp3')       
-        elif "Premium VIP" in userType :
-                    filename = os.path.join(dir, 'soundboard/Mobile/premium_vip.mp3')
-        else: 
-                    filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
-        #print filename
-        #print "loading filename"
-        mixer.music.load(filename)
-        #print time.time()
-        #print "playing file start"
-        #print time.time()
-        mixer.music.play()
-        #print "playing file stop"
-        #print time.time()
-#    else:
-#   print("audio already playing")
+    for x in xrange(1,5): 
+        if not mixer.music.get_busy():
+            # print "first play"
+            dir = os.path.dirname(__file__)
+            if "Basic" in userType: 
+                filename = os.path.join(dir, 'soundboard/Mobile/basic.mp3')       
+            elif "Premium VIP" in userType :
+                        filename = os.path.join(dir, 'soundboard/Mobile/premium_vip.mp3')
+            else: 
+                        filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
+            mixer.music.load(filename)
+            mixer.music.play()
+            break
+        time.sleep(0.3)
     return None
     
     
