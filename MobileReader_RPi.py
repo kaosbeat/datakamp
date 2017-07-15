@@ -209,8 +209,8 @@ def playAudioWC(userType, location):
             print filename
             mixer.music.load(filename)
             mixer.music.play()
-            time.sleep(2)
-            mixer.stop
+            #time.sleep(2)
+            #mixer.stop
             break
         time.sleep(0.3)
     return None
