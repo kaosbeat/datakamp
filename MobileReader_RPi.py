@@ -68,12 +68,20 @@ def open_reader():
         sys.exit()
         return None
 
+def playConfirmation():
+    if not mixer.music.get_busy():
+        dir = os.path.dirname(__file__)
+        filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
+        mixer.music.load(filename)
+        mixer.music.play()
+
 def listen(card, interval):
     """ Listens for a card to be placed on the reader """
     while 1:
 #       print("now is the time to exit the program by CTRL-C")
         if card.select():
             print readerid
+            playConfirmation()
 #           if "Ingang" in readerid:
             if readerid=="Ingang1" or readerid=="Ingang2":
                 post = logAction(readerid, card.uid, "A00")
@@ -171,7 +179,7 @@ def listen(card, interval):
                 break
 
         #print 'Waiting: Card Placement'
-        #time.sleep(interval)
+        time.sleep(interval)
         #return card.uid
 
 def listen_remove(card, interval, card_id):
@@ -181,55 +189,68 @@ def listen_remove(card, interval, card_id):
         if not card.select():
             break
         #print "Waiting: Card Removal"
-        time.sleep(interval)
+        # time.sleep(interval)
         
 # Make a folder structure with 
 def playAudioWC(userType, location):
     print "play WC"
-    if not mixer.music.get_busy():
-        dir = os.path.dirname(__file__)
-        print location
-        if "Basic" in userType: 
-            filename = os.path.join(dir, 'soundboard/WC/basic/',str(randint(1,6) )+'.mp3')       
-        else: 
-            if "Premium VIP" in userType :
-                        filename = os.path.join(dir, 'soundboard/WC/premium_vip/1.mp3')
+    for x in xrange(1,5): 
+        print ("checking if sound busy try: " + str(x)  )
+        if not mixer.music.get_busy():
+            dir = os.path.dirname(__file__)
+            print location
+            if "Basic" in userType: 
+                filename = os.path.join(dir, 'soundboard/WC/basic/',str(randint(1,6) )+'.mp3')       
             else: 
-                        filename = os.path.join(dir, 'soundboard/WC/vip/',str(randint(1,2))+'.mp3')
-        print filename
-        mixer.music.load(filename)
-        mixer.music.play()
+                if "Premium VIP" in userType :
+                            filename = os.path.join(dir, 'soundboard/WC/premium_vip/1.mp3')
+                else: 
+                            filename = os.path.join(dir, 'soundboard/WC/vip/',str(randint(1,2))+'.mp3')
+            print filename
+            mixer.music.load(filename)
+            mixer.music.play()
+            break
+        time.sleep(0.3)
     return None
 
 def playAudio(userType, location):
     print "playaudio" +userType+" "+location
-    if not mixer.music.get_busy():
-        dir = os.path.dirname(__file__)
-        print location
-        if "Basic" in userType: 
-            filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
-        else: 
-            if "Premium VIP" in userType :
-                        filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
+    for x in xrange(1,5): 
+        print ("checking if sound busy try: " + str(x)  )
+        if not mixer.music.get_busy():
+            dir = os.path.dirname(__file__)
+            print location
+            if "Basic" in userType: 
+                filename = os.path.join(dir, 'soundboard/',location,'basic.mp3')       
             else: 
-                        filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
-        print filename
-        mixer.music.load(filename)
-        mixer.music.play()
+                if "Premium VIP" in userType :
+                            filename = os.path.join(dir, 'soundboard/',location,'premium_vip.mp3')
+                else: 
+                            filename = os.path.join(dir, 'soundboard/',location,'vip.mp3')
+            print filename
+            mixer.music.load(filename)
+            mixer.music.play()
+            break
+        time.sleep(0.3)
     return None
 
 def buzzer(userType):
-    if not mixer.music.get_busy():
-        dir = os.path.dirname(__file__)
-        if "Basic" in userType: 
-            filename = os.path.join(dir, 'soundboard/buzzer/basic.mp3')       
-        else: 
-            if "Premium VIP" in userType :
-                        filename = os.path.join(dir, 'soundboard/buzzer/premium_vip.mp3')
+    for x in xrange(1,5): 
+        print ("checking if sound busy try: " + str(x)  )
+            
+        if not mixer.music.get_busy():
+            dir = os.path.dirname(__file__)
+            if "Basic" in userType: 
+                filename = os.path.join(dir, 'soundboard/buzzer/basic.mp3')       
             else: 
-                        filename = os.path.join(dir, 'soundboard/buzzer/vip.mp3')
-        mixer.music.load(filename)
-        mixer.music.play()
+                if "Premium VIP" in userType :
+                            filename = os.path.join(dir, 'soundboard/buzzer/premium_vip.mp3')
+                else: 
+                            filename = os.path.join(dir, 'soundboard/buzzer/vip.mp3')
+            mixer.music.load(filename)
+            mixer.music.play()
+            break
+        time.sleep(0.3)
     return None
 
 ##setup stuff
