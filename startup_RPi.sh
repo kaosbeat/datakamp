@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Startup script"
 while :
 do
 	python datakamp/MobileReader_RPi.py
