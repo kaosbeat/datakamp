@@ -22,6 +22,9 @@ readerid = config.settings['readerID']
 print readerid
 
 #######################  DMX FUNCTIONS ################
+
+
+
 def DmxSent(state):
     global dmxwrapper
     dmxwrapper.Stop()
@@ -31,6 +34,16 @@ def SendDmx(dmxuniverse, dmxdata):
 	dmxclient = dmxwrapper.Client()
 	dmxclient.SendDmx(dmxuniverse, dmxdata, DmxSent)
 	dmxwrapper.Run()
+
+def confirmationDMX():
+	global dmxuniverse
+	print ("trying to confirm!")
+	dmxdata = array.array('B', [61, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+	time.sleep(0.5)
+	dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+	SendDmx(dmxuniverse, dmxdata)
+
 
 def RedDMX():
 	global dmxuniverse
@@ -123,10 +136,11 @@ def listen(card, interval):
 	""" Listens for a card to be placed on the reader """
 	while 1:
 	if card.select():
+		confirmationDMX()
 	    # print readerid
         data = getVistorActions(card.uid)
+        print data
         if (data['percentile'] <= 20):
-        	# print data
             # INSERT DMX CODE HERE KASPER
             p20DMX()
             break
