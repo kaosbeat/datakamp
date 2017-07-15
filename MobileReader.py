@@ -27,6 +27,18 @@ state = 0
 
 readerid = config.settings['readerID']
 mixer.init()
+
+def testNetwork():
+    
+    for x in xrange(1,10):
+        post = logAction("networktest", "94BF840E", "ACT")
+        print post
+        print time.time()
+        data = getVistorActions("94BF840E")
+        print data
+        print time.time()
+
+
 # Card reader Functions
 def open_reader():
     """ Attempts to open the card reader """
@@ -43,6 +55,7 @@ def listen(card, interval):
     """ Listens for a card to be placed on the reader """
     while 1:
         if card.select():
+            playConfirmation()
             post = logAction(readerid, card.uid, "ACT")
             if post:
                 data = getVistorActions(card.uid)
@@ -68,9 +81,16 @@ def listen_remove(card, interval, card_id):
             break
         # print "Waiting: Card Removal"
         # time.sleep(interval)
+def playConfirmation():
+    if not mixer.music.get_busy():
+        dir = os.path.dirname(__file__)
+        filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
+        mixer.music.load(filename)
+        mixer.music.play()
 
 def playAudio(userType):
     print "playaudio"
+    print time.time()
     if not mixer.music.get_busy():
         # print "first play"
         dir = os.path.dirname(__file__)
@@ -81,8 +101,14 @@ def playAudio(userType):
         else: 
                     filename = os.path.join(dir, 'soundboard/Mobile/vip.mp3')
         print filename
+        print "loading filename"
         mixer.music.load(filename)
+        print time.time()
+        print "playing file start"
+        print time.time()
         mixer.music.play()
+        print "playing file stop"
+        print time.time()
 #    else:
 #   print("audio already playing")
     return None
@@ -95,12 +121,14 @@ card_info = card.info('cardselect v0.1m')
 
 
 
+# testNetwork()
+
 
 # Main loop
 while 1:
     # print "main"
-    time.sleep(0.05)
-    card_id = listen(card, 0.1)
+    # time.sleep(0.5)
+    card_id = listen(card, 0.3)
     listen_remove(card, 0.1, card_id)
 
 
