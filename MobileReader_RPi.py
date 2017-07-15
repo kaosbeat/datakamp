@@ -106,6 +106,10 @@ def listen(card, interval):
                     barSignal=1 
                     premiumVipHell(data)    
                     break
+                else:
+                    playAudio(str(data['visitortype']), readerid)
+                    break
+
                 break
 
             if  readerid=="Stempaal1" :
@@ -143,7 +147,7 @@ def listen(card, interval):
                 post = logAction(readerid, card.uid, "AWX")
                 if post:
                     data = getVistorActions(card.uid)
-                    buzzer(str(data['visitortype']))
+                    playAudio(str(data['visitortype']), readerid)
                     break
                 break
             
@@ -186,19 +190,19 @@ def playAudioWC(userType, location):
         dir = os.path.dirname(__file__)
         print location
         if "Basic" in userType: 
-            filename = os.path.join(dir, 'soundboard/WC/basic/',randint(1,6) ,'.mp3')       
+            filename = os.path.join(dir, 'soundboard/WC/basic/',str(randint(1,6) )+'.mp3')       
         else: 
             if "Premium VIP" in userType :
-                        filename = os.path.join(dir, 'soundboard/premium_vip/1.mp3')
+                        filename = os.path.join(dir, 'soundboard/WC/premium_vip/1.mp3')
             else: 
-                        filename = os.path.join(dir, 'soundboard/vip/',randint(1,2),'.mp3')
+                        filename = os.path.join(dir, 'soundboard/WC/vip/',str(randint(1,2))+'.mp3')
         print filename
         mixer.music.load(filename)
         mixer.music.play()
     return None
 
 def playAudio(userType, location):
-    print "playaudio"
+    print "playaudio" +userType+" "+location
     if not mixer.music.get_busy():
         dir = os.path.dirname(__file__)
         print location
