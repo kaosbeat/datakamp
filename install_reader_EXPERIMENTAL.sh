@@ -4,9 +4,9 @@
 #for the mobile readers we start with standard pocketCHIP firmware (4.4)
 #this script should be run with SUDO
 
-echo 'export LC_ALL=en_US.UTF-8' >> /home/chip/rc.local
-echo 'export LANG=en_US.UTF-8' >> /home/chip/rc.local
-echo 'bash /home/chip/datakamp/startup.sh' >> /home/chip/rc.local
+#echo 'export LC_ALL=en_US.UTF-8' >> /home/chip/.bashrc
+#echo 'export LANG=en_US.UTF-8' >> /home/chip/.bashrc
+#echo 'bash /home/chip/datakamp/startup.sh' >> /home/chip/.bashrc
 
 
 apt-get install swig -y
@@ -42,7 +42,8 @@ pip install pycrypto
 
 
 cp libccid_Info.plist /etc/libccid_Info.plist
-
+#cp rc.local /etc/rc.local
+cp .bashrcChip /home/chip/.bashrc
 #https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Using_the_NetworkManager_Command_Line_Tool_nmcli.html
 nmcli con add con-name datakamp ifname wlan0 type wifi ssid guesst 
 #ip4 10.0.3.1/24 gw4 10.0.0.1
