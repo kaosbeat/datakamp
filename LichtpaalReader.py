@@ -47,7 +47,7 @@ def confirmationDMX():
 def basicDMX():
     global dmxuniverse
     print ("you basic scum")
-    dmxdata = array.array('B', [0, 255, 0, 0 ,255])
+    dmxdata = array.array('B', [7, 255, 0, 255 ,0])
     SendDmx(dmxuniverse, dmxdata)
     time.sleep(1)
     dmxdata = array.array('B', [0, 0, 0, 0 ,0])
@@ -56,7 +56,7 @@ def basicDMX():
 def premiumDMX():
     global dmxuniverse
     print ("you premium scum")
-    dmxdata = array.array('B', [55, 0, 255, 0 ,255])
+    dmxdata = array.array('B', [13, 0, 0, 50 ,0])
     SendDmx(dmxuniverse, dmxdata)
     time.sleep(1)
     dmxdata = array.array('B', [0, 0, 0, 0 ,0])
@@ -65,15 +65,18 @@ def premiumDMX():
 def premiumVIPDMX():
     global dmxuniverse
     print ("you vip scum")
-    dmxdata = array.array('B', [108, 0, 0, 200 ,255])
+    dmxdata = array.array('B', [25, 0, 0, 0 ,0])
     SendDmx(dmxuniverse, dmxdata)
     time.sleep(1)
-    dmxdata = array.array('B', [79, 0, 0, 200 ,255])
+    dmxdata = array.array('B', [25, 0, 0, 180 ,0])
     SendDmx(dmxuniverse, dmxdata)
     time.sleep(1)
-    dmxdata = array.array('B', [108, 0, 0, 200 ,255])
+    dmxdata = array.array('B', [25, 0, 0, 255 ,0])
     SendDmx(dmxuniverse, dmxdata)
-    time.sleep(1)
+    time.sleep(2)
+    dmxdata = array.array('B', [255, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(2)
     dmxdata = array.array('B', [0, 0, 0, 0 ,0])
     SendDmx(dmxuniverse, dmxdata)
 
@@ -168,7 +171,7 @@ def listen(card, interval):
     """ Listens for a card to be placed on the reader """
     while 1:
         if card.select():
-            confirmationDMX()
+            #confirmationDMX()
             # print readerid
 	    post = logAction(readerid, card.uid, "ACT")
             data = getVistorActions(card.uid)
@@ -177,7 +180,7 @@ def listen(card, interval):
                 basicDMX()
             elif (data['visitortype'] == 'Premium'):
                 premiumDMX()
-            elif (data['visitortype'] == 'PremiumVIP'):
+            elif (data['visitortype'] == 'Premium VIP'):
                 premiumVIPDMX()
             # elif (data['percentile'] <= 20):
             #     # INSERT DMX CODE HERE KASPER
