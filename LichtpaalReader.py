@@ -44,6 +44,38 @@ def confirmationDMX():
     dmxdata = array.array('B', [0, 0, 0, 0 ,0])
     SendDmx(dmxuniverse, dmxdata)
 
+def basicDMX():
+    global dmxuniverse
+    print ("you basic scum")
+    dmxdata = array.array('B', [0, 255, 0, 0 ,255])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+
+def premiumDMX():
+    global dmxuniverse
+    print ("you premium scum")
+    dmxdata = array.array('B', [55, 0, 255, 0 ,255])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
+
+def premiumVIPDMX():
+    global dmxuniverse
+    print ("you vip scum")
+    dmxdata = array.array('B', [108, 0, 0, 200 ,255])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [79, 0, 0, 200 ,255])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [108, 0, 0, 200 ,255])
+    SendDmx(dmxuniverse, dmxdata)
+    time.sleep(1)
+    dmxdata = array.array('B', [0, 0, 0, 0 ,0])
+    SendDmx(dmxuniverse, dmxdata)
 
 def RedDMX():
     global dmxuniverse
@@ -111,7 +143,7 @@ def p80DMX(vtype):
     SendDmx(dmxuniverse, dmxdata)
 def p100DMX(vtype):
     global dmxuniverse
-    dmxdata = array.array('B', [200, 0, 0, 0 ,0])
+    dmxdata = array.array('B', [200, 0, 0, 128 ,0])
     SendDmx(dmxuniverse, dmxdata)
     time.sleep(3)
     dmxdata = array.array('B', [0, 0, 0, 0 ,0])
@@ -138,25 +170,32 @@ def listen(card, interval):
         if card.select():
             confirmationDMX()
             # print readerid
+	    post = logAction(readerid, card.uid, "ACT")
             data = getVistorActions(card.uid)
             print data
-            if (data['percentile'] <= 20):
-                # INSERT DMX CODE HERE KASPER
-                p20DMX(data['visitortype'])
-                break
-            elif (data['percentile'] <= 40):
-                p40DMX(data['visitortype'])
-                break
+            if (data['visitortype'] == 'Basic'):
+                basicDMX()
+            elif (data['visitortype'] == 'Premium'):
+                premiumDMX()
+            elif (data['visitortype'] == 'PremiumVIP'):
+                premiumVIPDMX()
+            # elif (data['percentile'] <= 20):
+            #     # INSERT DMX CODE HERE KASPER
+            #     p20DMX(data['visitortype'])
+            #     break
+            # elif (data['percentile'] <= 40):
+            #     p40DMX(data['visitortype'])
+            #     break
                 
-            elif (data['percentile'] <= 60):
-                p60DMX(data['visitortype'])
-                break
-            elif (data['percentile'] <= 80):
-                p60DMX(data['visitortype'])
-                break
-            else:
-                p100DMX(data['visitortype'])
-                break
+            # elif (data['percentile'] <= 60):
+            #     p60DMX(data['visitortype'])
+            #     break
+            # elif (data['percentile'] <= 80):
+            #     p60DMX(data['visitortype'])
+            #     break
+            # else:
+            #     p100DMX(data['visitortype'])
+            #     break
 
   
 
